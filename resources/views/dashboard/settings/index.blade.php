@@ -48,7 +48,8 @@
                                 <th class="border-bottom-0">الايميل</th>
                                 <th class="border-bottom-0">الوصورة</th>
                                 <th class="border-bottom-0"></th>
-                                <th class="border-bottom-0"></th>
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +60,8 @@
                                 <td>{{$setting->location}}</td>
                                 <td>{{$setting->location_ar}}</td>
                                 <td>{{$setting->email}}</td>
-                                <td data-toggle="modal" data-target="#img_show{{$setting->id}}"><img src="..uploads/logo/{{$setting->logo}}" width="40px" class="rounded-circle">
+
+                                <td data-toggle="modal" data-target="#img_show{{$setting->id}}"><img src="uploads/logo/{{$setting->logo}}" width="40px" class="rounded-circle">
                                 </td>
                                 <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#edit{{$setting->id}}" title="">
                                         <i class="fa fa-edit"></i></button></td>
@@ -125,7 +127,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <center><img src="..uploads/logo/{{$setting->logo}}" width="400px" class="rounded-circle"></center>
+                                            <center><img src="../uploads/logo/{{$setting->logo}}" width="400px" class="rounded-circle"></center>
                                         </div>
                                     </div>
                                 </div>
