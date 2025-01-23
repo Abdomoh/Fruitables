@@ -28,8 +28,8 @@
                         </form>
                         <a href="{{ route('redirect.google') }}">  <button class="w-100 btn form-control border-secondary "data-mdb-button-init
                             data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style=""
-                          ><i class="fab fa-facebook-f me-2"></i>
-                            بحساب فيس بوك </button></a><br><br>
+                          ><i class="fab fa-google me-2"></i>
+                            بحساب  قوقل </button></a><br><br>
                             <a href="{{ route('redirect.facebook') }}"> <button class="w-100 btn form-control border-secondary "data-mdb-button-init
                                 data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style=""
                                ><i class="fab fa-facebook-f me-2"></i>
