@@ -7,34 +7,35 @@
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="text-center mx-auto" style="max-width: 700px;">
-                            <p class="text-primary" style="font-weight: 500;font-size:20px;">تسجيل بيانات الدخول</p>
+                            <p class="text-primary" style="font-weight: 500;font-size:20px;">  {{ __('main.login') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <form action="{{ route('login') }}" class="" method="POST" class="" dir="rtl">
                             @csrf
                             <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4"
-                                placeholder="ادخل الايميل">
+                                placeholder=" {{ __('main.Enter_Your_Email') }}">
 
                             <input type="password" name="password" class="w-100 form-control border-0 py-3 mb-4"
-                                placeholder="كلمة المرور">
+                                placeholder=" {{ __('main.Enter_Your_Password') }}">
                             <x-input-error :messages="$errors->get('password')" class="mt-2  text-danger" />
                             <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary "
-                                type="submit" name="submit">تسجيل الدخول</button>
+                                type="submit" name="submit">{{ __('main.login') }} </button>
                             <br>
                             <div class="text-center">
-                                <p class="text-blue">او تسجيل الدخول :</p>
+                                <p class="text-blue">  {{ __('main.Or') }}  {{ __('main.login') }} :</p>
                             </div>
                         </form>
                         <a href="{{ route('redirect.google') }}">  <button class="w-100 btn form-control border-secondary "data-mdb-button-init
                             data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style=""
                           ><i class="fab fa-google me-2"></i>
-                            بحساب  قوقل </button></a><br><br>
+                          {{ __('main.google_account') }} </button></a><br><br>
                             <a href="{{ route('redirect.facebook') }}"> <button class="w-100 btn form-control border-secondary "data-mdb-button-init
                                 data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style=""
                                ><i class="fab fa-facebook-f me-2"></i>
-                                بحساب فيس بوك </button></a>
+                                  {{ __('main.facebook_account') }} </button></a>
                     </div>
+                   <a href="{{ route('register') }}"><p class="text-red text-center">  {{ __('main.register') }}</p></a>
                 </div>
             </div>
         </div>
