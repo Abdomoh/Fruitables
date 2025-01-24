@@ -19,7 +19,7 @@ class SettingSeeder extends Seeder
             'name_project' => 'Fruitables',
             'location' => 'Port-Sudan',
             'email' => 'email@gmail.com',
-            'logo' => asset('uploads/logo/vegetable-item-6.JPG')
+            'logo' => asset('logo/vegetable-item-6.JPG')
         ];
         Setting::create($setting);
     }

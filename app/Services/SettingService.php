@@ -12,7 +12,7 @@ class SettingService
     {
         $input = $request->all();
         if ($image = $request->file('logo')) {
-            $destintionPath = '/uploads/logo/';
+            $destintionPath = 'logo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destintionPath, $profileImage);
             $input['logo'] = $profileImage;
@@ -23,7 +23,7 @@ class SettingService
     public function updateSetting(Request $request,$id){
         $input = $request->all();
         if ($image = $request->file('logo')) {
-            $destintionPath = '/uploads/logo/';
+            $destintionPath = 'logo/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destintionPath, $profileImage);
             $input['logo'] = $profileImage;

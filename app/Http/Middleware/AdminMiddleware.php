@@ -16,9 +16,17 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role != 'admin') {
-             return redirect()->intended('/index');
+
+
+        //     if (Auth::check() && Auth::user()->role != 'admin') {
+        //         return redirect()->intended('/index');
+        //    }
+        //    return $next($request);
+
+        if (Auth::guard('admin')->check()) {
+          
+            return $next($request);
         }
-        return $next($request);
+        return to_route('admin.login');
     }
 }

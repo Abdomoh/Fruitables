@@ -109,9 +109,9 @@
                     </div>
                     <a class="dropdown-item" href="../profial"><i class="bx bx-user-circle"></i>البروفايل</a>
                     <a class="dropdown-item" href=""><i class="bx bx-cog"></i> تعديل البروفايل</a>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('admin.logout') }}">
                         @csrf
-                        <a class="dropdown-item" href="route('logout')"
+                        <a class="dropdown-item" href="route('admin.logout')"
                             onclick="event.preventDefault();
 															this.closest('form').submit();">
                             <i class="bx bx-log-out"></i> تسجيل الخروج</a>
