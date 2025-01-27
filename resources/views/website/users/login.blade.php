@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <form action="{{ route('login') }}" class="" method="POST" class="" dir="rtl">
+                        <form action="{{ route('login') }}" class="" method="POST" class="" dir="">
                             @csrf
                             <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4"
                                 placeholder=" {{ __('main.Enter_Your_Email') }}">
@@ -41,4 +41,4 @@
         </div>
     </div>
     <!-- Contact End -->
-@endsection
+@stop

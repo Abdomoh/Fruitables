@@ -3,10 +3,15 @@
 namespace App\Services;
 
 use App\Models\Category;
+use App\Traits\SlugTrait;
 use Illuminate\Http\Request;
+use App\Traits\TranslationTrait;
 
 class CategoryService
 {
+
+    use SlugTrait;
+    use TranslationTrait;
     public function gatAllCategory()
     {
 
@@ -26,6 +31,7 @@ class CategoryService
         }
 
         $category = Category::create($input);
+        $input['slug'] = $this->createSlug('Category', $category->id, $category->name, 'categories');
         return $category;
     }
 

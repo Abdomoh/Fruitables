@@ -14,6 +14,7 @@
                         <x-auth-session-status class="mb-4" :status="session('status')" />
                         <div class="col-lg-12">
                             <form action="{{ route('register') }}" class="" method="POST" dir="">
+                                @csrf
                                 <input type="text" name="name" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Your_Name') }}">
                                 <x-input-error :messages="$errors->get('name')" class="mt-2  text-danger" />
                                 <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Enter_Your_Email') }}">
@@ -34,4 +35,4 @@
         </div>
         <!-- Contact End -->
 
-        @endsectionConfirmation
+        @stop
