@@ -91,76 +91,82 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form action="{{ route('products.update', $product->id) }}"
-                                                        class="p-5 bg-white" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        {{ method_field('PUT') }}
-                                                        <div class="form-group">
-                                                            <label class="control-label">الاسم بالعربي</label>
-                                                            <input type="text" name="name_ar"
-                                                                value="{{ $product->name_ar }}" class="form-control" />
-                                                            <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
+
+                                                <form action="{{ route('products.update', $product->id) }}"
+                                                    method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    {{ method_field('PUT') }}
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="form-group col-xl-6">
+                                                                <label class="control-label">الاسم بالعربي</label>
+                                                                <input type="text" name="name_ar"
+                                                                    value="{{ $product->name_ar }}" class="form-control" />
+                                                                <input id="id" type="hidden" name="id"
+                                                                    class="form-control" value="{{ $product->id }}" />
+                                                            </div>
+                                                            <div class="form-group col-xl-6">
+                                                                <label class="control-label">الاسم بالانجلزي</label>
+                                                                <input type="text" name="name"
+                                                                    value="{{ $product->name }}" class="form-control" />
+                                                                <input id="id" type="hidden" name="id"
+                                                                    class="form-control" value="{{ $product->id }}" />
+                                                            </div>
+                                                            <div class="form-group col-xl-6">
+                                                                <select name="category_id" class="form-control">
+                                                                    <option value="" selected disabled>اختر الصنف
+                                                                    </option>
+                                                                    @foreach ($categories as $category)
+                                                                        <option value="{{ $category->id }}"
+                                                                            {{ $product->category_id == $category->id ? 'selected' : '' }}>
+                                                                            {{ $category->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-xl-6">
+                                                                <label class="control-label"> سعر المنتج </label>
+                                                                <input type="number" name="price"
+                                                                    value="{{ $product->price }}" class="form-control" />
+                                                                <input id="id" type="hidden" name="id"
+                                                                    class="form-control" value="{{ $product->id }}" />
+                                                            </div>
+                                                            <div class="form-group col-xl-6">
+                                                                <label class="control-label"> الكمية </label>
+                                                                <input type="number" name="quentity"
+                                                                    value="{{ $product->quentity }}"
+                                                                    class="form-control" />
+                                                                <input id="id" type="hidden" name="id"
+                                                                    class="form-control" value="{{ $product->id }}" />
+                                                            </div>
+                                                            <div class="form-group col-xl-6">
+                                                                <label for="exampleFormControlTextarea1">صورة</label>
+                                                                <input type="file" name="image"
+                                                                    value="{{ $product->image }}" class="form-control" />
+                                                                <input id="id" type="hidden" name="id"
+                                                                    class="form-control" value="{{ $product->id }}" />
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label">الاسم بالانجلزي</label>
-                                                            <input type="text" name="name"
-                                                                value="{{ $product->name }}" class="form-control" />
-                                                            <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
-                                                        </div>
-                                                        <select name="category_id" class="form-control">
-                                                            <option value="" selected disabled>اختر  الصنف </option>
-                                                            @foreach ($categories as $category)
-                                                                <option value="{{ $category->id }}"
-                                                                    {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                                                    {{ $category->name }}
-                                                                </option>
-                                                            @endforeach
-
-
-
-                                                        </select>
                                                         <div class="form-group">
                                                             <label class="control-label"> الوصف بالعربي</label>
                                                             <textarea type="text" name="description_ar" class="form-control">{{ $product->description_ar }}</textarea>
                                                             <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
+                                                                class="form-control" value="{{ $product->id }}" />
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="control-label"> الوصف بالانجليزي</label>
                                                             <textarea type="text" name="description" class="form-control">{{ $product->description }}</textarea>
                                                             <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
+                                                                class="form-control" value="{{ $product->id }}" />
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label"> الوصف بالانجليزي</label>
-                                                            <input type="number" name="price"
-                                                                value="{{ $product->price }}" class="form-control" />
-                                                            <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label"> الوصف بالانجليزي</label>
-                                                            <input type="number" name="quentity"
-                                                                value="{{ $product->quentity }}" class="form-control" />
-                                                            <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="exampleFormControlTextarea1">صورة</label>
-                                                            <input type="file" name="image"
-                                                                value="{{ $product->image }}" class="form-control" />
-                                                            <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="{{ $product->id }}">
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" name="submit"
-                                                        class="btn btn-success btn-sm">تعديل</button>
-                                                    <button type="button" class="btn btn-secondary btn-sm"
-                                                        data-dismiss="modal">اغلاق</button>
+
+
+                                                    <div class="modal-footer "  dir="rtl">
+                                                        <button type="submit" name="submit"
+                                                            class="btn btn-success btn-sm ">تعديل</button>
+                                                        <button type="button" class="btn btn-secondary btn-sm"
+                                                            data-dismiss="modal">اغلاق</button>
+                                                    </div>
                                                 </div>
                                                 </form>
                                             </div>
@@ -181,7 +187,7 @@
                                     </div>
 
 
-                                    
+
                                     <!-- img show -->
                                     <!-- Deleted -->
                                     <div class="modal fade" id="delete{{ $product->id }}" tabindex="-1"
@@ -229,7 +235,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">اضافة صنف </h5>
+                            <h5 class="modal-title" id="exampleModalLabel">اضافة منتج </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -238,38 +244,67 @@
                             autocomplete="">
                             {{ csrf_field() }}
                             <div class="modal-body">
-                                <div class="form-group">
-                                    <label class="control-label">الاسم بالانجليزي</label>
-                                    <input type="text" name="name" value="{{ old('name') }}"
-                                        class="form-control" />
-                                    @error('name')
-                                        <span class="form-text text-danger">{{ $message }}</s>
-                                        @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">الصنف </label>
-                                    <select name="category_id" class="form-control">
-                                        <option value="">اختر الصنف</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
+                                <div class="row">
+                                    <div class="form-group col-xl-6">
+                                        <label class="control-label">الاسم بالانجليزي</label>
+                                        <input type="text" name="name" value="{{ old('name') }}"
+                                            class="form-control" />
+                                        @error('name')
+                                            <span class="form-text text-danger">{{ $message }}</s>
+                                            @enderror
+                                    </div>
+
+                                    <div class="form-group col-xl-6">
+                                        <label class="control-label">الاسم بالعربي</label>
+                                        <input type="text" name="name_ar" value="{{ old('name_ar') }}"
+                                            class="form-control" />
+                                        @error('name_ar')
+                                            <span class="form-text text-danger">{{ $message }}</s>
+                                            @enderror
+                                    </div>
 
 
-                                    </select>
 
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">الاسم بالعربي</label>
-                                    <input type="text" name="name_ar" value="{{ old('name_ar') }}"
-                                        class="form-control" />
-                                    @error('name_ar')
-                                        <span class="form-text text-danger">{{ $message }}</s>
-                                        @enderror
+                                    <div class="form-group col-xl-6">
+                                        <label class="control-label">الصنف </label>
+                                        <select name="category_id" class="form-control">
+                                            <option value="">اختر الصنف</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+
+
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group col-xl-6">
+                                        <label class="control-label">السعر </label>
+                                        <input type="" name="price" value="{{ old('price') }}"
+                                            class="form-control" />
+                                        @error('price')
+                                            <span class="form-text text-danger">{{ $message }}</s>
+                                            @enderror
+                                    </div>
+                                    <div class="form-group col-xl-6">
+                                        <label class="control-label">الكمية </label>
+                                        <input type="number" name="quentity" value="{{ old('quentity') }}"
+                                            class="form-control" />
+                                        @error('quentity')
+                                            <span class="form-text text-danger">{{ $message }}</s>
+                                            @enderror
+                                    </div>
+                                    <div class="form-group col-xl-6">
+                                        <label for="exampleFormControlTextarea1">صورة المنتج</label>
+                                        <input type="file" name="image" value="" class="form-control" />
+                                        @error('image')
+                                            <span class="form-text text-danger">{{ $message }}</s>
+                                            @enderror
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label"> الوصف بالعربي</label>
-                                    <textarea type="text" name="description_ar" class="form-control">{{ old('description_ar') }}"</textarea>
+                                    <textarea type="text" name="description_ar" class="form-control">{{ old('description_ar') }}</textarea>
                                     @error('description_ar')
                                         <span class="from-text text-danger">{{ $message }}</span>
                                     @enderror
@@ -277,38 +312,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label"> الوصف بالانجليزي</label>
-                                    <textarea type="text" name="description" class="form-control">{{ old('description') }}"</textarea>
+                                    <textarea type="text" name="description" class="form-control">{{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="from-text text-danger">{{ $message }}</span>
                                     @enderror
 
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label">السعر </label>
-                                    <input type="" name="price" value="{{ old('price') }}"
-                                        class="form-control" />
-                                    @error('price')
-                                        <span class="form-text text-danger">{{ $message }}</s>
-                                        @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">الكمية </label>
-                                    <input type="number" name="quentity" value="{{ old('quentity') }}"
-                                        class="form-control" />
-                                    @error('quentity')
-                                        <span class="form-text text-danger">{{ $message }}</s>
-                                        @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">صورة</label>
-                                    <input type="file" name="image" value="" class="form-control" />
+
+
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success btn-sm">اضافة</button>
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-dismiss="modal">اغلاق</button>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-success btn-sm">اضافة</button>
-                                <button type="button" class="btn btn-secondary btn-sm"
-                                    data-dismiss="modal">اغلاق</button>
-                            </div>
+
                         </form>
                     </div>
                 </div>

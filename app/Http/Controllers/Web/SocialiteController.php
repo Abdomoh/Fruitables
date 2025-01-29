@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Website;
+namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Services\SocialiteService;
 use App\Http\Controllers\Controller;
@@ -18,7 +18,7 @@ class SocialiteController extends Controller
     public function handelGoogleCallback(Request $request)
     {
         $userGoogle = $this->socialiteService->handelGoogleCallback();
-        return redirect()->intended('index');
+        return redirect()->intended('/');
     }
 
     public function redirectToFacebook(Request $request)
@@ -30,6 +30,6 @@ class SocialiteController extends Controller
     public function handelFacebookCallback(Request $request)
     {
         $this->socialiteService->handelFacebookCallback();
-        return redirect()->intended('index');
+        return redirect()->intended('/');
     }
 }

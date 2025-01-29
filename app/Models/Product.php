@@ -9,7 +9,16 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'description', 'price', 'quentity', 'image','category_id'];
+    protected $fillable = ['id', 'name', 'description', 'price', 'quentity', 'image', 'category_id'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class,'category_id');
+    }
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class, 'product_id');
+    }
     public function getImageFullPathAttribute()
     {
         return $this->image ? env('APP_URL') . 'uploads/products/' . $this->image : null;

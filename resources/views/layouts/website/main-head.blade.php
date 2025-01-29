@@ -33,15 +33,10 @@
                    <div class="navbar-nav mx-auto">
                        <a href="index.html" class="nav-item nav-link active">{{ __('main.Home') }}</a>
                        <a href="shop.html" class="nav-item nav-link">{{ __('main.Shope') }}</a>
-                       <a href="shop-detail.html" class="nav-item nav-link">{{ __('main.Categories') }}</a>
+                       <a href="#" class="nav-item nav-link">{{ __('main.Categories') }}</a>
                        <div class="nav-item dropdown">
-                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ __('main.Products') }}</a>
-                           <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                               <a href="cart.html" class="dropdown-item">Cart</a>
-                               <a href="chackout.html" class="dropdown-item">Chackout</a>
-                               <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                               <a href="404.html" class="dropdown-item">404 Page</a>
-                           </div>
+                           <a href="#products" class="nav-item nav-link">{{ __('main.Products') }}</a>
+
                        </div>
                        <a href="contact.html" class="nav-item nav-link">{{ __('main.Contact') }}</a>
                        <div class="nav-item dropdown">

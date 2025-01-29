@@ -24,9 +24,9 @@ class AdminMiddleware
         //    return $next($request);
 
         if (Auth::guard('admin')->check()) {
-          
+
             return $next($request);
         }
-        return to_route('admin.login');
+        return redirect()->intended('dashboard/admin/login');
     }
 }

@@ -13,6 +13,7 @@ use App\Traits\TranslationTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 
@@ -74,10 +75,10 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
 
-        $validate = $request->validated();
+
         $data = $this->productService->updateProduct($request, $id);
         $this->editTranslation($request, 'Product', $data->id);
         $data->save();

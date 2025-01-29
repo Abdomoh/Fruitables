@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 class Category extends Model
 {
     use HasFactory;
@@ -36,5 +39,9 @@ class Category extends Model
             ->where('row_id', $this->attributes['id'])
             ->first();
         return $slug ? $slug->value : null;
+    }
+    public function products()
+    {
+        return $this->hasMany(Product::class,'category_id');
     }
 }
