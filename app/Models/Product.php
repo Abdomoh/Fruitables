@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
+    protected $table = 'products'; // Ensure it's pointing to the right table
+    protected $primaryKey = 'id';  // Default is 'id', change if needed
 
     protected $fillable = ['id', 'name', 'description', 'price', 'quentity', 'image', 'category_id'];
 
@@ -15,10 +19,7 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class,'category_id');
     }
-    public function cart()
-    {
-        return $this->belongsTo(Cart::class, 'product_id');
-    }
+
     public function getImageFullPathAttribute()
     {
         return $this->image ? env('APP_URL') . 'uploads/products/' . $this->image : null;

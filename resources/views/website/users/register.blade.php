@@ -15,13 +15,13 @@
                         <div class="col-lg-12">
                             <form action="{{ route('register') }}" class="" method="POST" dir="">
                                 @csrf
-                                <input type="text" name="name" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Your_Name') }}">
+                                <input type="text" name="name" class="w-100 form-control border-0 py-3 mb-4" required placeholder="{{ __('main.Your_Name') }}" value="{{ old('name') }}">
                                 <x-input-error :messages="$errors->get('name')" class="mt-2  text-danger" />
-                                <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Enter_Your_Email') }}">
+                                <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4" required placeholder="{{ __('main.Enter_Your_Email') }}" value="{{ old('email') }}">
                                 <x-input-error :messages="$errors->get('email')" class="mt-2  text-danger" />
-                                <input type="password" name="'password" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Enter_Your_Password') }}">
+                                <input type="password" name="password" class="w-100 form-control border-0 py-3 mb-4" required placeholder="{{ __('main.Enter_Your_Password') }}">
                                 <x-input-error :messages="$errors->get('password')" class="mt-2  text-danger" />
-                                <input type="password"  name="password_confirmation" class="w-100 form-control border-0 py-3 mb-4" placeholder="{{ __('main.Enter_Your_password_Confirmation') }} ">
+                                <input type="password"  name="password_confirmation" class="w-100 form-control border-0 py-3 mb-4" required placeholder="{{ __('main.Enter_Your_password_Confirmation') }} ">
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />
                                 <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">{{ __('main.register') }}</button>
 

@@ -1,5 +1,63 @@
 @extends('layouts.website.nav')
+
 @section('content')
+<!-- Hero Start -->
+<div class="container-fluid py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-12 col-lg-7">
+                <h4 class="mb-3 text-secondary">100% Organic Foods</h4>
+                <h1 class="mb-5 display-3 text-primary">Organic Veggies & Fruits Foods</h1>
+                <div class="position-relative mx-auto">
+                    <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number"
+                        placeholder="Search">
+                    <button type="submit"
+                        class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+                        style="top: 0; right: 25%;left: 25%;" id="btn-search">Submit Now</button>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-5">
+
+                <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+
+                    <div class="carousel-inner" role="listbox">
+                        @foreach ($categories as $category)
+                            <div class="carousel-item active rounded">
+                                <img src="website/img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded"
+                                    alt="First slide">
+                                <a href="#" class="btn px-4 py-2 text-white rounded">
+                                    @if (App::getLocale() == 'ar')
+                                        {{ $category->name_ar }}
+                                    @else
+                                        {{ $category->name }}
+                                    @endif
+                                </a>
+                            </div>
+                        @endforeach
+
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
 
     <body>
         <!-- Featurs Section Start -->
@@ -59,7 +117,7 @@
             <div class="container py-5">
                 <div class="tab-class text-center">
                     <div class="testimonial-header text-center">
-                        <h4 class=" text-dark mb-5">Our Testimonial</h4>
+                        <h4 class=" text-dark mb-5" style=" font-family: Cairo, sans-serif;">Our Testimonial</h4>
                     </div>
                     <div class="tab-content">
                         <div id="" class="tab-pane fade show p-0 active">
@@ -70,7 +128,7 @@
                                             <div class="col-md-6 col-lg-4 col-xl-3">
                                                 <div class="rounded position-relative fruite-item">
                                                     <div class="fruite-img">
-                                                        <img src="../uploads/products/{{ $product->image }}"
+                                                        <img src="../uploads/products/{{ $product->image }}" loading="lazy"
                                                             class="img-fluid w-100 rounded-top" alt="">
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
@@ -95,10 +153,26 @@
                                                         <div class="d-flex justify-content-between flex-lg-wrap">
                                                             <p class="text-dark fs-5 fw-bold mb-0">${{ $product->price }} /
                                                                 kg</p>
-                                                            <a href="#"
+                                                            {{-- <a href="{{ route('cart.store') }}"
                                                                 class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                                     class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                                                                cart</a>
+                                                                cart</a> --}}
+
+                                                            <form action="{{ route('cart.store') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="hidden" value="{{ $product->id }}"
+                                                                    name="product_id">
+                                                                <input type="hidden" value="{{ $product->price }}"
+                                                                    name="price">
+                                                                <input type="hidden" value="1" name="quantity">
+                                                                <a href=""
+                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                                        class="fa fa-shopping-bag me-2 text-primary"></i><button
+                                                                        class="btn btn-sm text-primary">
+                                                                        {{ __('main.add_to_cart') }}</button> </a>
+
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -119,19 +193,21 @@
                 <div class="row g-4 justify-content-center">
 
                     @foreach ($categories as $category)
-                    <div class="col-md-6 col-lg-4">
-                        <a href="#">
-                            <div class="service-item bg-primary rounded border border-primary">
-                                <img src="uploads/category/{{ $category->image }}" class="img-fluid rounded-top w-100" alt="">
-                                <div class="px-4 rounded-bottom">
-                                    <div class="service-content bg-secondary text-center p-4 rounded">
-                                        <h5 class="text-white">{{ $category->name }}</h5>
-                                        <h3 class="mb-0">Discount 30$</h3>
+                        <div class="col-md-6 col-lg-4">
+                            <a href="#">
+                                <div class="service-item bg-primary rounded border border-primary">
+                                    <img src="uploads/category/{{ $category->image }}" loading="lazy"
+                                        class="img-fluid rounded-top w-100" alt="">
+                                    <div class="px-4 rounded-bottom">
+                                        <div class="service-content bg-secondary text-center p-4 rounded">
+                                            <h5 class="text-white" style=" font-family: Cairo, sans-serif;">
+                                                {{ $category->name }}</h5>
+                                            <h3 class="mb-0" style=" font-family: Cairo, sans-serif;">Discount 30$</h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -140,13 +216,13 @@
         <!-- Vesitable Shop Start-->
         <div class="container-fluid vesitable py-5">
             <div class="container py-5">
-                <h1 class="mb-0">latest products</h1>
-                <div class="owl-carousel vegetable-carousel justify-content-center">
+                <h1 class="mb-0" style=" font-family: Cairo, sans-serif;">latest products</h1>
+                <div class="owl-carousel vegetable-carousel justify-content-center" dir="ltr">
                     @foreach ($latestProduct as $product)
                         <div class="border border-primary rounded position-relative vesitable-item">
                             <div class="vesitable-img">
-                                <img src="uploads/products/{{ $product->image }}" class="img-fluid w-100 rounded-top"
-                                    alt="">
+                                <img src="uploads/products/{{ $product->image }}" loading="lazy"
+                                    class="img-fluid w-100 rounded-top" alt="">
                             </div>
                             <div class="text-white bg-primary px-3 py-1 rounded position-absolute"
                                 style="top: 10px; right: 10px;">

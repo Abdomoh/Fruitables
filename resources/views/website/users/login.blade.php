@@ -14,7 +14,7 @@
                         <form action="{{ route('login') }}" class="" method="POST" class="" dir="">
                             @csrf
                             <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4"
-                                placeholder=" {{ __('main.Enter_Your_Email') }}">
+                                placeholder=" {{ __('main.Enter_Your_Email') }}" value="{{ old('email') }}">
 
                             <input type="password" name="password" class="w-100 form-control border-0 py-3 mb-4"
                                 placeholder=" {{ __('main.Enter_Your_Password') }}">

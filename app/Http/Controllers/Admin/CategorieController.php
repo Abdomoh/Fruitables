@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Traits\SlugTrait;
 use App\Models\Category;
+use Flasher\Toastr\Prime\ToastrInterface;
 use App\Traits\TranslationTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -35,9 +36,11 @@ class CategorieController extends Controller
     {
        $validator = $request->validated();
        $data= $this->categoryService->createCategory($request);
-  
+
         $this->translate($request, 'Category', $data->id);
+
         session::flash('success', 'تمت   الاضافة  بنجاح ');
+
         return redirect('dashboard/categoryies');
     }
     /**

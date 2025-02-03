@@ -10,12 +10,12 @@
            <div class="d-flex justify-content-between">
                <div class="top-info ps-2">
                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#"
-                           class="text-white"> @if (App::getLocale()== 'ar') {{ $setting->location_ar }} @else {{ $setting->location }}@endif</a></small>
+                           class="text-white"> @if (App::getLocale()== 'ar') {{ $setting->location_ar ?? '' }} @else {{ $setting->location ?? '' }}@endif</a></small>
                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#"
                            class="text-white">{{ $setting->email }}</a></small>
                </div>
                <div class="top-link pe-2">
-                   <a href="#" class="text-white"><small class="text-white mx-2">@if (App::getLocale()== 'ar') {{ $setting->name_projectar }} @else {{ $setting->name_project }}@endif</small>/</a>
+                   <a href="#" class="text-white"><small class="text-white mx-2">@if (App::getLocale()== 'ar') {{ $setting->name_project_ar  ?? ''}} @else {{ $setting->name_project ?? '' }}@endif</small></a>
 
                </div>
            </div>
@@ -23,7 +23,7 @@
        <div class="container px-0">
            <nav class="navbar navbar-light bg-white navbar-expand-xl">
                <a href="index.html" class="navbar-brand">
-                   <h1 class="text-primary display-6">{{ __('main.Fruitables') }}</h1>
+                   <h1 class="text-primary display-6" style=" font-family: Cairo, sans-serif;">{{ __('main.Fruitables') }}</h1>
                </a>
                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
                    data-bs-target="#navbarCollapse">
@@ -31,7 +31,7 @@
                </button>
                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                    <div class="navbar-nav mx-auto">
-                       <a href="index.html" class="nav-item nav-link active">{{ __('main.Home') }}</a>
+                       <a href="{{ url('/') }}" class="nav-item nav-link active">{{ __('main.Home') }}</a>
                        <a href="shop.html" class="nav-item nav-link">{{ __('main.Shope') }}</a>
                        <a href="#" class="nav-item nav-link">{{ __('main.Categories') }}</a>
                        <div class="nav-item dropdown">
@@ -56,11 +56,11 @@
                        <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                class="fas fa-search text-primary"></i></button>
-                       <a href="#" class="position-relative me-4 my-auto">
+                       <a href="{{url('../cart-product') }}" class="position-relative me-4 my-auto">
                            <i class="fa fa-shopping-bag fa-2x"></i>
                            <span
                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                               style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                               style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{ $countCart }}</span>
                        </a>
                        <div class="nav-item dropdown">
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i
