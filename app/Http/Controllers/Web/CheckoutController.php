@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -37,12 +38,12 @@ class CheckoutController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-        $cart = Cart::with('product')->AuthUser()->orderBy('created_at', 'desc')->get();
-        //dd($cart);
-        if ($cart->count() > 0) {
+        try {
+            DB::beginTransaction();
+
             $order = new Order();
             $order->payment_method = $request->payment_method;
-            $order->notes_order = $request->notes_order;
+            $order->order_notes = $request->order_notes;
             $order->user_id = Auth::user()->id;
 
             $order->save();
@@ -61,6 +62,16 @@ class CheckoutController extends Controller
                 ->select(OrderProduct::raw('sum(quantity * price) as total'))->first();
             $order->total = $orderProduct->total;
             $order->save();
+
+            // Clear the cart after successful order
+            $removeCart = Cart::AuthUser()->get();
+            foreach ($removeCart as $key => $remove) {
+                $data = Cart::find($remove->id);
+                $data->delete();
+            }
+            DB::commit();
+
+
             if (empty(Auth::user()->adress)) {
                 $user = User::where('id', Auth::user()->id ?? '')->first();
                 $user->name = $request->name;
@@ -70,10 +81,11 @@ class CheckoutController extends Controller
                 $user->email = $request->email;
                 $user->update();
             }
-            session::flash('success', __('main.add_to_cart_success'));
-            return back();
-        } else {
-            session::flash(' warning', 'غير موجود بالعربة  ');
+            session::flash('success', __('main.add_to_order_success'));
+            return to_route('cart-product');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            session::flash(' warning',__('main.emtpy_cart'));
             return back();
         }
     }

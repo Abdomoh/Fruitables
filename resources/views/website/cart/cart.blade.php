@@ -107,13 +107,13 @@ background-size: cover;">
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0 me-4" style=" font-family: Cairo, sans-serif;">
                                         {{ __('main.subtotal') }}:</h5>
-                                    <p class="mb-0">${{ number_format($cart->total, 2) }}</p>
+                                    <p class="mb-0">${{ number_format($total, 2) }}$ </p>
                                 </div>
                                 <p class="mb-0 text-end">{{ __('main.Domestic_shipping_only') }}.</p>
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">{{ __('main.total') }}</h5>
-                                <p class="mb-0 pe-4">${{ number_format($cart->total, 2) }}</p>
+                                <p class="mb-0 pe-4">${{ number_format($total, 2) }}$ </p>
                             </div>
                             <a href="{{ route('checkout') }}">
                                 <button
@@ -133,6 +133,7 @@ background-size: cover;">
                     <div class="shoping__checkout">
                         <br><br>
                         <h5>{{ __('main.cart_emtpy') }}</h5>
+             <p class="mb-0 mt-4 ">{{ number_format($total, 2) }}$  :     {{ __('main.total') }}</p>
                     </div>
                 </div>
             </div>

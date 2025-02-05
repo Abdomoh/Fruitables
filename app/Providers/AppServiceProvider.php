@@ -26,11 +26,12 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $setting =  Setting::orderBy('created_at', 'desc')->first();
-          $categories = Category::with('products')->get();
-          $countCart=Cart::where('user_id',Auth::user()->id ?? '')->count();
+            $categories = Category::with('products')->get();
+            $countCart = Cart::where('user_id', Auth::user()->id ?? '')->count();
+            $total = Cart::where('user_id', Auth::user()->id ?? '')->sum('total');
 
 
-            $view->with(['setting' => $setting,'categories'=>$categories,'countCart'=>$countCart]);
+            $view->with(['setting' => $setting, 'categories' => $categories, 'countCart' => $countCart, 'total' => $total]);
         });
     }
 }

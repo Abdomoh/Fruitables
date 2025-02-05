@@ -27,6 +27,7 @@ return [
     'add_to_cart' => 'add to cart',
     'not_found_cart' => 'not found in cart',
     'update_cart' => 'Update Cart is done',
+    'remove_to_cart'=>' remove to product form cart',
     'Domestic_shipping_only' => 'Domestic shipping only',
     'total' => 'Total',
     'subtotal' => 'SubTotal',

@@ -77,8 +77,8 @@
                         <hr>
 
                         <div class="form-item">
-                            <textarea name="text" name="notes_order" class="form-control" spellcheck="false" cols="30" rows="11"
-                                placeholder="{{ __('main.notes_order') }}">{{ old('notes_order') }}</textarea>
+                            <textarea name="text" name="order_notes" class="form-control" spellcheck="false" cols="30" rows="11"
+                                placeholder="{{ __('main.order_notes') }}">{{ old('order_notes') }}</textarea>
 
                         </div>
                     </div>

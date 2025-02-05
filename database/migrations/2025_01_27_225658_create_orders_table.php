@@ -16,10 +16,9 @@ return new class extends Migration
             $table->float('total')->default(0);
             $table->string('payment_method')->default(0);
             $table->string('status')->default('panding');
-            $table->text('notes_order')->nullable();
+            $table->text('order_notes')->nullable();
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

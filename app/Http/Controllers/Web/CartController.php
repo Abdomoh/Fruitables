@@ -55,30 +55,30 @@ class CartController extends Controller
             'price' => 'required',
         ]);
         $cart = Cart::find($id);
-       // dd($cart);
+
         $cart->total = $cart->price * $input['quantity'];
-        // dd($cart->total);
+
         if (!$cart) {
-            toastr()->error(' غير موجود بالعربة');
+            session::flash('warning', __('main.not_found_cart'));
             return back();
         } else {
 
             $cart = $cart->update($input);
-            toastr()->success('تم تحديث العربة ');
+            session::flash('info', __('main.update_cart'));
             return back();
         }
     }
 
-       public function removeProductInCart($id)
+    public function removeProductInCart($id)
     {
         $product = Cart::AuthUser()->where('product_id', $id)->first();
         if (!$product) {
-            session::flash(' warning','غير موجود بالعربة  ');
+            session::flash(' warning', __('main.not_found_cart'));
             return back();
         }
         $deleted = $product->delete();
         if ($deleted) {
-            session::flash('error' ,'تم الحزف بنجاح' );
+            session::flash('error', __('main.remove_to_cart'));
             return back();
         }
     }
