@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable=['id','user_id','price','quantity','total','order_notes'];
+    protected $fillable = ['id', 'user_id', 'price', 'quantity', 'total', 'order_notes'];
 
     public function user()
     {
@@ -21,4 +22,9 @@ class Order extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('Y/m/d');
+    }
+   
 }

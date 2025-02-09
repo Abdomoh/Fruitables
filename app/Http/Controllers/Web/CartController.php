@@ -21,8 +21,8 @@ class CartController extends Controller
         $validator = $request->validated();
         $input = $request->all();
         $user_id = Auth::user()->id ?? 'None';
-        if (Cart::where('user_id', $user_id)->where('product_id', $input['product_id'])->count() > 0) {
-            session::flash('warning', __('main.alredy_to_cart'));
+        if (Cart::AuthUser()->where('product_id', $input['product_id'])->count() > 0) {
+            session::flash('warning', __('main.already_to_cart_success'));
             return back();
         } else {
 

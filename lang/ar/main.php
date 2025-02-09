@@ -23,7 +23,7 @@ return [
   'Enter_Your_password_Confirmation' => 'تأكيد كلمة المرور',
 
   'add_to_cart_success' => 'تم اضافة المنتج الي عربة التسوق',
-  'alredy_to_cart' => 'موجود مسبقا بالعربه',
+  'already_to_cart_success' => 'موجود مسبقا بالعربه',
   'add_to_cart' => 'اضف المنتج',
   'not_found_cart' => 'غير موجود ',
   'update_cart' => 'تم تحديث العربة',
@@ -49,12 +49,21 @@ return [
   'phone' => 'الهاتف',
   'house_number' => 'رقم المنزل اسم الشارع',
   'Place_Order' => 'معالجة الطلب ',
+  'payment_mothod'=> 'طريقة الدفع',
   'Cash_On_Delivery' => 'الدفع عند الاستلام',
   'Direct_Bank_Transfer' => 'التحويل البنكي المباشر',
   'detels_bank' => 'قم بإجراء الدفع مباشرة في حسابنا المصرفي. يرجى استخدام معرف الطلب الخاص بك كمرجع للدفع. لن يتم شحن طلبك حتى يتم تحويل الأموال إلى حسابنا',
   'emtpy_cart'=>'العربة فارغة لايمكن اكمال الطلب',
   'add_to_order_success'=>'تم اضافة الطلب بنجاح',
-  
+  'orders' =>'الطلبات',
+   'dashboard' =>'لوحة تجكم الطلبات',
+    'client'=> 'العميل',
+   'order_not_found' =>' لاتوجد طلبات ',
+   'view'=>'عرض',
+     'order_detels' =>'تفاصيل الطلب ',
+    'status' =>'حالة الطلب',
+    'order_no' => ' رقم الطلب',
+    'created_at'=>' تاريخ انشاء الطلب'
 
 
 

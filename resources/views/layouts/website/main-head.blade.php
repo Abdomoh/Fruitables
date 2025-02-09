@@ -66,14 +66,15 @@
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i
                                    class="fas fa-user fa-2x"></i></a>
                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                            <a href="{{ url('orders') }}" class="dropdown-item" ><i class="fas fa-tasks"></i>  {{ __('main.dashboard') }}</a>
                                <form method="POST" action="{{ route('logout') }}">
                                    @csrf
                                    <a class="dropdown-item" href="route('logout')"
                                        onclick="event.preventDefault();
                                      this.closest('form').submit();">
-                                       <i class="fas fa-sign-out-alt"></i> تسجيل الخروج</a>
+                                       <i class="fas fa-sign-out-alt"></i>  {{ __('main.logout') }}</a>
                                </form>
-                               <a href="chackout.html" class="dropdown-item" ><i class="fas fa-tasks"></i> لوحة التحكم</a>
+
                            </div>
                        </div>
                    </div>

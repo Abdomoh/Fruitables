@@ -95,8 +95,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($cartproducts as $item)
                                     <tr>
-                                        @foreach ($cartproducts as $item)
+
                                             <th scope="row">
                                                 <div class="d-flex align-items-center mt-2">
                                                     <img src="../uploads/products/{{ $item->product->image }} "
@@ -108,10 +109,10 @@
                                             <td class="py-5">${{ $item->price }}</td>
                                             <td class="py-5">{{ $item->quantity }}</td>
                                             <td class="py-5">${{ number_format($item->total, 2) }}</td>
-                                        @endforeach
+
 
                                     </tr>
-
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

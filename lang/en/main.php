@@ -22,12 +22,12 @@ return [
     'Enter_Your_Password' => 'Enter Your Password',
     'Enter_Your_password_Confirmation' => 'Enter Your Password Confirmation',
 
-    'add_to_cart' => ' Add Product To Cart',
-    'alredy_to_cart_success' => 'alredy product in cart',
+    'add_to_cart_success' => ' Add Product To Cart',
+    'already_to_cart_success' => 'alredy product in cart',
     'add_to_cart' => 'add to cart',
     'not_found_cart' => 'not found in cart',
     'update_cart' => 'Update Cart is done',
-    'remove_to_cart'=>' remove to product form cart',
+    'remove_to_cart' => ' remove to product form cart',
     'Domestic_shipping_only' => 'Domestic shipping only',
     'total' => 'Total',
     'subtotal' => 'SubTotal',
@@ -49,10 +49,20 @@ return [
     'phone' => 'Phone',
     'house_number' => 'House Number Street Name',
     'Place_Order' => 'Place Order',
+    'payment_mothod'=> 'Payment method',
     'Cash_On_Delivery' => 'Cash On Delivery',
     'Direct_Bank_Transfer' => 'Direct Bank Transfer',
     'detels_bank' => 'Make your payment directly into our bank account. Please use your Order ID as the payment
     reference. Your order will not be shipped until the funds have cleared in our account',
-    'emtpy_cart'=>'The cart is empty The order cannot be completed.'
+    'emtpy_cart' => 'The cart is empty The order cannot be completed.',
+    'orders' => 'Orders',
+    'dashboard' => 'Control panel orders',
+    'client'=> 'Client',
+    'order_not_found' =>'order not found',
+    'view'=>'View',
+    'order_detels' =>'Order Detels',
+    'status' =>'Status order',
+    'order_no' => 'Order No',
+    'created_at'=>'Created at order'
 
 ];

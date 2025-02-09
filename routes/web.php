@@ -13,6 +13,8 @@ use App\Http\Controllers\Web\SocialiteController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Web\CheckoutController;
 use App\Http\Controllers\Web\LandingPageController;
+use App\Http\Controllers\Web\OrderController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,9 +55,13 @@ Route::prefix('')->group(function () {
         Route::post('/cart-update/{id}', 'updateProductInCart')->name('cart.update');
         Route::post('cart-remove/{id}', 'removeProductInCart')->name('cart.remove');
     });
+    Route::controller(OrderController::class)->middleware('auth')->group(function () {
+        Route::get('orders', 'viewOrder')->name('orders');
+        Route::get('orders/{id}', 'show')->name('orders.show');
+    });
     Route::controller(CheckoutController::class)->middleware('auth')->group(function () {
-        Route::get('checkout','checkout')->name('checkout');
-        Route::post('checkout','placeOrder')->name('checkout.store');
+        Route::get('checkout', 'checkout')->name('checkout');
+        Route::post('checkout', 'placeOrder')->name('checkout.store');
     });
 
     Route::controller(SocialiteController::class)->group(function () {

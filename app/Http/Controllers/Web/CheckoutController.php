@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Web;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use Illuminate\Support\Str;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,7 @@ class CheckoutController extends Controller
             $order = new Order();
             $order->payment_method = $request->payment_method;
             $order->order_notes = $request->order_notes;
+            $order->order_no= 'ORD-'. Str::random(8);
             $order->user_id = Auth::user()->id;
 
             $order->save();

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('order_no')->unique();
             $table->float('total')->default(0);
             $table->string('payment_method')->default(0);
             $table->string('status')->default('panding');
