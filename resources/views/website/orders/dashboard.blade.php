@@ -50,11 +50,17 @@
                         <div class="d-flex">
 
                             <div class="">
-                                <p class="mb-2" style="font-size: 14px;">{{ __('main.orders') }} {{ __('main.client') }} </p>
+                                <p class="mb-2" style="font-size: 14px;">{{ __('main.orders') }} {{ __('main.client') }}
+                                </p>
                                 <div class="d-flex justify-content-between">
-                                    @if ($orders == null)
-                                        <p> {{ __('main.order_not_found') }}.</p>
-                                        <a href="{{ url('shoping') }}"  class="btn btn-outline-primary-2"><span>التسوق</span><i class="icon-long-arrow-right"></i></a>
+
+                                    @if ($orders->count() == 0)
+                                        <p> {{ __('main.order_not_found') }}.
+                                            <a href="{{ url('shoping') }}"
+                                                class="btn btn-outline-primary-2"><span>{{ __('main.go_to') }}
+                                                    {{ __('main.shoping') }}</span><i
+                                                    class="icon-long-arrow-right"></i></a>
+                                        </p>
                                     @else
                                         <div class="col-md-12 ">
                                             <div class="table-responsive">
@@ -72,16 +78,21 @@
                                                         @foreach ($orders as $order)
                                                             <tr>
 
-                                                                <td >{{ $order->order_no }}</td>
-                                                                <td >{{ $order->total }} </td>
+                                                                <td>{{ $order->order_no }}</td>
+                                                                <td>{{ $order->total }}
+                                                                    @if (App::getlocale() == 'ar')
+                                                                        ج.س
+                                                                    @else
+                                                                        SDG
+                                                                    @endif
+                                                                </td>
                                                                 @if ($order->status == 'panding')
-                                                                    <td  class="badge bg-danger"> {{ $order->status }}</td>
+                                                                    <td class="badge bg-danger"> {{ $order->status }}</td>
                                                                 @else
-                                                                    <td  class="badge bg-success"> {{ $order->status }}</td>
+                                                                    <td class="badge bg-success"> {{ $order->status }}</td>
                                                                 @endif
-                                                                <td >{{ $order->formatted_created_at }}</td>
-                                                                <td ><a
-                                                                        href="../orders/{{ $order->id }}"><i
+                                                                <td>{{ $order->formatted_created_at }}</td>
+                                                                <td><a href="../orders/{{ $order->id }}"><i
                                                                             class="fa fa-eye" title="  Show Order Details "
                                                                             style="color:#81c408 ;">{{ __('main.view') }}</i></a>
 
@@ -95,8 +106,13 @@
                                     @endif
 
                                 </div>
-                                <p class="text-dark">{{ __('main.total') }} $
+                                <p class="text-dark">{{ __('main.total') }}
                                     {{ number_format($orders->sum('total', 2)) }}
+                                    @if (App::getlocale() == 'ar')
+                                        ج.س
+                                    @else
+                                        SDG
+                                    @endif
                                 </p>
                             </div>
                         </div>

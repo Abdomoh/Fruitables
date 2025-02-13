@@ -47,7 +47,13 @@ Route::prefix('dashboard')->group(function () {
 
 
 Route::prefix('')->group(function () {
-    Route::get('/', [LandingPageController::class, 'index']);
+
+    Route::view('/contact-us','website.contacts.contact-us');
+    Route::controller(LandingPageController::class)->group(function(){
+        Route::get('/', 'index');
+
+    });
+
 
     Route::controller(CartController::class)->middleware('auth')->group(function () {
         Route::post('add-to-cart', 'addProductToCart')->name('cart.store');

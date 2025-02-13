@@ -10,12 +10,24 @@
            <div class="d-flex justify-content-between">
                <div class="top-info ps-2">
                    <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#"
-                           class="text-white"> @if (App::getLocale()== 'ar') {{ $setting->location_ar ?? '' }} @else {{ $setting->location ?? '' }}@endif</a></small>
+                           class="text-white">
+                           @if (App::getLocale() == 'ar')
+                               {{ $setting->location_ar ?? '' }}
+                           @else
+                               {{ $setting->location ?? '' }}
+                           @endif
+                       </a></small>
                    <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#"
                            class="text-white">{{ $setting->email }}</a></small>
                </div>
                <div class="top-link pe-2">
-                   <a href="#" class="text-white"><small class="text-white mx-2">@if (App::getLocale()== 'ar') {{ $setting->name_project_ar  ?? ''}} @else {{ $setting->name_project ?? '' }}@endif</small></a>
+                   <a href="#" class="text-white"><small class="text-white mx-2">
+                           @if (App::getLocale() == 'ar')
+                               {{ $setting->name_project_ar ?? '' }}
+                           @else
+                               {{ $setting->name_project ?? '' }}
+                           @endif
+                       </small></a>
 
                </div>
            </div>
@@ -23,7 +35,8 @@
        <div class="container px-0">
            <nav class="navbar navbar-light bg-white navbar-expand-xl">
                <a href="index.html" class="navbar-brand">
-                   <h1 class="text-primary display-6" style=" font-family: Cairo, sans-serif;">{{ __('main.Fruitables') }}</h1>
+                   <h1 class="text-primary display-6" style=" font-family: Cairo, sans-serif;">
+                       {{ __('main.Fruitables') }}</h1>
                </a>
                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse"
                    data-bs-target="#navbarCollapse">
@@ -33,14 +46,15 @@
                    <div class="navbar-nav mx-auto">
                        <a href="{{ url('/') }}" class="nav-item nav-link active">{{ __('main.Home') }}</a>
                        <a href="shop.html" class="nav-item nav-link">{{ __('main.Shope') }}</a>
-                       <a href="#" class="nav-item nav-link">{{ __('main.Categories') }}</a>
+                       <a href="#category" class="nav-item nav-link">{{ __('main.Categories') }}</a>
                        <div class="nav-item dropdown">
                            <a href="#products" class="nav-item nav-link">{{ __('main.Products') }}</a>
 
                        </div>
-                       <a href="contact.html" class="nav-item nav-link">{{ __('main.Contact') }}</a>
+                       <a href="{{ url('contact-us') }}" class="nav-item nav-link">{{ __('main.Contact') }}</a>
                        <div class="nav-item dropdown">
-                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ __('main.Language') }} </a>
+                           <a href="#" class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown">{{ __('main.Language') }} </a>
                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                @foreach (Config::get('languages') as $lang => $language)
                                    @if ($lang != App::getLocale())
@@ -56,7 +70,7 @@
                        <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                            data-bs-toggle="modal" data-bs-target="#searchModal"><i
                                class="fas fa-search text-primary"></i></button>
-                       <a href="{{url('../cart-product') }}" class="position-relative me-4 my-auto">
+                       <a href="{{ url('../cart-product') }}" class="position-relative me-4 my-auto">
                            <i class="fa fa-shopping-bag fa-2x"></i>
                            <span
                                class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
@@ -66,14 +80,23 @@
                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i
                                    class="fas fa-user fa-2x"></i></a>
                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                            <a href="{{ url('orders') }}" class="dropdown-item" ><i class="fas fa-tasks"></i>  {{ __('main.dashboard') }}</a>
-                               <form method="POST" action="{{ route('logout') }}">
-                                   @csrf
-                                   <a class="dropdown-item" href="route('logout')"
-                                       onclick="event.preventDefault();
+                               @auth
+
+                                   <a href="{{ url('orders') }}" class="dropdown-item"><i class="fas fa-tasks"></i>
+                                       {{ __('main.dashboard') }}</a>
+                                   <form method="POST" action="{{ route('logout') }}">
+                                       @csrf
+                                       <a class="dropdown-item" href="route('logout')"
+                                           onclick="event.preventDefault();
                                      this.closest('form').submit();">
-                                       <i class="fas fa-sign-out-alt"></i>  {{ __('main.logout') }}</a>
-                               </form>
+                                           <i class="fas fa-sign-out-alt"></i> {{ __('main.logout') }}</a>
+                                   </form>
+
+                               @endauth
+                               @guest
+                                   <a href="{{ url('login') }}" class="dropdown-item"><i class="fas fa-sign-in-alt"></i>
+                                       {{ __('main.login') }}</a>
+                               @endguest
 
                            </div>
                        </div>

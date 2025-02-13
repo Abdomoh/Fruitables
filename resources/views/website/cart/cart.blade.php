@@ -59,6 +59,8 @@ background-size: cover;">
                                         <form action="{{ url('cart-update', $cart->id) }}" method="POST"
                                             class='form-group'>
                                             @csrf
+
+
                                             <div class="input-group quantity mt-4" style="width: 100px;">
                                                 <input type="number" name="quantity"
                                                     class="form-control form-control-sm text-center border-0"
@@ -66,7 +68,8 @@ background-size: cover;">
                                                 <input type="hidden" value="{{ $cart->id }}" name="id">
                                                 <div class="input-group-btn">
                                                     <button type="submit"
-                                                        class="btn btn-sm btn-minus rounded-circle bg-light border  ">
+                                                        class="btn btn-sm btn-minus rounded-circle bg-light border  "
+                                                        name="submit">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                 </div>
@@ -76,7 +79,13 @@ background-size: cover;">
                                     </td>
 
                                     <td>
-                                        <p class="mb-0 mt-4">{{ number_format($cart->total, 2) }}$</p>
+                                        <p class="mb-0 mt-4">{{ number_format($cart->total, 2) }}
+                                            @if (App::getlocale() == 'ar')
+                                                ج.س
+                                            @else
+                                                SDG
+                                            @endif
+                                        </p>
                                     </td>
                                     <td>
                                         <form action="{{ route('cart.remove', $cart->product_id) }}" method="POST">
@@ -85,6 +94,7 @@ background-size: cover;">
                                             <button class="btn btn-md rounded-circle bg-light border mt-4">
                                                 <i class="fa fa-times text-danger"></i>
                                             </button>
+                                        </form>
                                     </td>
 
                                 </tr>
@@ -107,13 +117,25 @@ background-size: cover;">
                                 <div class="d-flex justify-content-between mb-4">
                                     <h5 class="mb-0 me-4" style=" font-family: Cairo, sans-serif;">
                                         {{ __('main.subtotal') }}:</h5>
-                                    <p class="mb-0">${{ number_format($total, 2) }}$ </p>
+                                    <p class="mb-0">${{ number_format($total, 2) }}
+                                        @if (App::getlocale() == 'ar')
+                                            ج.س
+                                        @else
+                                            SDG
+                                        @endif
+                                    </p>
                                 </div>
                                 <p class="mb-0 text-end">{{ __('main.Domestic_shipping_only') }}.</p>
                             </div>
                             <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                 <h5 class="mb-0 ps-4 me-4">{{ __('main.total') }}</h5>
-                                <p class="mb-0 pe-4">${{ number_format($total, 2) }}$ </p>
+                                <p class="mb-0 pe-4">{{ number_format($total, 2) }}
+                                    @if (App::getlocale() == 'ar')
+                                        ج.س
+                                    @else
+                                        SDG
+                                    @endif
+                                </p>
                             </div>
                             <a href="{{ route('checkout') }}">
                                 <button
@@ -133,7 +155,15 @@ background-size: cover;">
                     <div class="shoping__checkout">
                         <br><br>
                         <h5>{{ __('main.cart_emtpy') }}</h5>
-             <p class="mb-0 mt-4 ">{{ number_format($total, 2) }}$  :     {{ __('main.total') }}</p>
+                        <p><a href="{{ url('orders/dashboard') }}"> {{ __('main.go_to') }}
+                                {{ trans('main.dashboard') }}</a></p>
+                        <p class="mb-0 mt-4  text-bold"> {{ number_format($total, 2) }}
+                            @if (App::getlocale() == 'ar')
+                            ج.س
+                        @else
+                            SDG
+                        @endif 
+                          {{ __('main.total') }}</p>
                     </div>
                 </div>
             </div>

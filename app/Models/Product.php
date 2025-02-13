@@ -47,4 +47,9 @@ class Product extends Model
             ->first();
         return $slug ? $slug->value : null;
     }
+
+    public function orderProducts()
+    {
+        return $this->hasMany(OrderProduct::class);
+    }
 }

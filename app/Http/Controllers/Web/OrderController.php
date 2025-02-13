@@ -11,18 +11,21 @@ class OrderController extends Controller
 {
     public function viewOrder()
     {
-        $orders=Order::where('user_id',Auth::user()->id ?? '')->get();
-        return view('website.orders.dashboard',compact('orders'));
+        $orders = Order::where('user_id', Auth::user()->id ?? '')->get();
+
+        return view('website.orders.dashboard', compact('orders'));
     }
 
-    public function show($id){
-        $order = Order::where('user_id',Auth::user()->id)->find($id);
+    public function show($id)
+    {
+        $order = Order::where('user_id', Auth::user()->id)->find($id);
+        //  dd($order->total);
 
-        $order_products = OrderProduct::where('order_id',$order->id)
-            ->with(['product','order'])->orderBy('id', 'DESC')->get();
+        $order_products = OrderProduct::where('order_id', $order->id)
+            ->with(['product', 'order'])->orderBy('id', 'DESC')->get();
 
 
-            return view('website.orders.show',compact('order','order_products'));
 
+        return view('website.orders.show', compact('order', 'order_products'));
     }
 }
