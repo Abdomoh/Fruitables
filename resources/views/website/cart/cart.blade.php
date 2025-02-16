@@ -155,15 +155,16 @@ background-size: cover;">
                     <div class="shoping__checkout">
                         <br><br>
                         <h5>{{ __('main.cart_emtpy') }}</h5>
-                        <p><a href="{{ url('orders/dashboard') }}"> {{ __('main.go_to') }}
+                        <p><a href="{{ url('orders') }}"> {{ __('main.go_to') }}
                                 {{ trans('main.dashboard') }}</a></p>
                         <p class="mb-0 mt-4  text-bold"> {{ number_format($total, 2) }}
                             @if (App::getlocale() == 'ar')
-                            ج.س
-                        @else
-                            SDG
-                        @endif 
-                          {{ __('main.total') }}</p>
+                                ج.س
+                            @else
+                                SDG
+                            @endif
+                            {{ __('main.total') }}
+                        </p>
                     </div>
                 </div>
             </div>

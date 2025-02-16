@@ -101,7 +101,17 @@ return [
     'Email'=>'Email',
     'Subscribe_Now'=>'Subscribe Now',
     'Submit' =>'Submit',
-    'print'=>'Print'
+    'print'=>'Print',
+    'Categories'=>'Categories',
+    'Featured_products'=>'Featured products',
+
+
+    'Confirm_Password'=>'Confirm Password',
+    'password'=>'Password',
+    'optional'=>'optional',
+    'Update_Profile'=>'Update Profile',
+    'profile_information'=>'Profile Information',
+    'profile'=>'Profile'
 
 
 ];

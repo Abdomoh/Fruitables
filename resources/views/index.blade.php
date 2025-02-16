@@ -134,6 +134,8 @@
                                                     </div>
                                                     <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                                                         style="top: 10px; left: 10px;">
+
+
                                                         @if (App::getLocale() == 'ar')
                                                             {{ $product->category->name_ar }}
                                                         @else
@@ -141,11 +143,13 @@
                                                         @endif
                                                     </div>
                                                     <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                        <a href="{{ url('product-detels',$product->id) }}" class="h5">
                                                         @if (App::getLocale() == 'ar')
                                                             <h4>{{ $product->name_ar }}</h4>
                                                         @else
                                                             <h4>{{ $product->name }}</h4>
                                                         @endif
+                                                        </a>
                                                         @if (App::getLocale() == 'ar')
                                                             <p>{{ Str::of($product->description_ar)->limit(40) }}</p>
                                                         @else

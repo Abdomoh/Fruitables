@@ -47,7 +47,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="d-flex flex-column text-start footer-item">
                             <h4 class="text-light mb-3">{{ __('main.account') }}</h4>
-                            <a class="btn-link" href="">{{ __('main.My_Account') }}</a>
+                            <a class="btn-link" href="{{ url('profile-user') }}">{{ __('main.My_Account') }}</a>
                             <a class="btn-link" href="{{ url('cart-product') }}">{{ __('main.Shopping_Cart') }}</a>
                             <a class="btn-link" href="{{ url('orders') }}">{{ __('main.Order_History') }}</a>
 

@@ -15,6 +15,6 @@ class LandingPageController extends Controller
         $products = Product::with('category')->paginate(8);
         $latestProduct = Product::with('category')->latest()->orderBy('created_at', 'desc')->paginate(8); /// 8 latest products
         $bestsellerProducts = Product::withCount('orderProducts as total_sold')->take(10)->orderByDesc('total_sold')->get(); /// /// 10 top best seller products
-        return view('index', compact('products', 'latestProduct','bestsellerProducts'));
+        return view('index', compact('products', 'latestProduct', 'bestsellerProducts'));
     }
 }

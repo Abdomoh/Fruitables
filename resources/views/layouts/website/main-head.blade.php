@@ -34,7 +34,7 @@
        </div>
        <div class="container px-0">
            <nav class="navbar navbar-light bg-white navbar-expand-xl">
-               <a href="index.html" class="navbar-brand">
+               <a href="{{ url('/') }}" class="navbar-brand">
                    <h1 class="text-primary display-6" style=" font-family: Cairo, sans-serif;">
                        {{ __('main.Fruitables') }}</h1>
                </a>
@@ -77,13 +77,19 @@
                                style="top: -5px; left: 15px; height: 20px; min-width: 20px;">{{ $countCart }}</span>
                        </a>
                        <div class="nav-item dropdown">
-                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <i
-                                   class="fas fa-user fa-2x"></i></a>
+                           <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+                               style="font-family: Cairo;"> <i class="fas fa-user fa-x">
+                                   @auth
+                                       {{ Auth::user()->name }}
+                                   @endauth
+                               </i></a>
                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
                                @auth
 
                                    <a href="{{ url('orders') }}" class="dropdown-item"><i class="fas fa-tasks"></i>
                                        {{ __('main.dashboard') }}</a>
+                                   <a href="{{ url('profile-user') }}" class="dropdown-item"><i class="fas fa-user"></i>
+                                       {{ __('main.profile') }}</a>
                                    <form method="POST" action="{{ route('logout') }}">
                                        @csrf
                                        <a class="dropdown-item" href="route('logout')"

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Cart;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,7 +14,8 @@ class Product extends Model
     protected $table = 'products'; // Ensure it's pointing to the right table
     protected $primaryKey = 'id';  // Default is 'id', change if needed
 
-    protected $fillable = ['id', 'name', 'description', 'price', 'quentity', 'image', 'category_id'];
+    protected $fillable = ['id', 'name',  'description', 'price', 'quentity', 'image', 'category_id'];
+
 
     public function category()
     {

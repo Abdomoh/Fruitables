@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Setting;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Paginator::useBootstrap();
+        
         view()->composer('*', function ($view) {
             $setting =  Setting::orderBy('created_at', 'desc')->first();
             $categories = Category::with('products')->get();

@@ -91,16 +91,25 @@ return [
   'Shop_Info' => 'معلومات المتجر',
   'About_Us' => 'حولنا',
   'Contact_Us' => ' اتصل بنا',
-  'My_Account'=>'حسابي',
-  'Order_History' =>'سجل الطلبات',
-  'Shopping_Cart'=>'عربة التسوق',
-  'Contact' =>'معلومات الاتصال',
-  'account'=>'معلومات الحساب',
-  'Subscribe_Now'=>'اشترك الان ',
-  'Submit' =>'ارسال',
+  'My_Account' => 'حسابي',
+  'Order_History' => 'سجل الطلبات',
+  'Shopping_Cart' => 'عربة التسوق',
+  'Contact' => 'معلومات الاتصال',
+  'account' => 'معلومات الحساب',
+  'Subscribe_Now' => 'اشترك الان ',
+  'Submit' => 'ارسال',
 
-  'Email'=>'الايميل',
-     'print'=>'طباعة'
+  'Email' => 'الايميل',
+  'print' => 'طباعة',
+  'Categories' => 'الاصناف',
+  'Featured_products' => 'المنتجات المميزة',
+
+  'Confirm_Password' => 'تأكيد كلمة المرور',
+  'password' => 'كلمة المرور',
+  'optional' => 'اختياري',
+  'Update_Profile' => 'تحديث البروفايل',
+  'profile_information' => 'معلومات البروفايل',
+  'profile' => 'البروفايل'
 
 
 
