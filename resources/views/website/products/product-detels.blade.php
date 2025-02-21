@@ -108,8 +108,9 @@
                                     @foreach ($categories as $category)
                                         <li>
                                             <div class="d-flex justify-content-between fruite-name">
-                                                <a href="#"><i
-                                                        class="fas fa-apple-alt me-2"></i>{{ $category->name }}</a>
+                                                <a href="#"><i class="fas fa-apple-alt me-2"></i>
+                                                    @if (App::getlocale() == 'ar')
+                                                </a>
                                                 <span> ({{ $category->products->count() }})</span>
                                             </div>
                                         </li>
@@ -141,7 +142,8 @@
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <div class="d-flex mb-2">
-                                            <h5 class="fw-bold me-2" style="font-family: cairo;">{{ $product->price }} @if (App::getlocale() == 'ar')
+                                            <h5 class="fw-bold me-2" style="font-family: cairo;">{{ $product->price }}
+                                                @if (App::getlocale() == 'ar')
                                                     ج.س
                                                 @else
                                                     SDG
@@ -176,7 +178,7 @@
                                                 @else
                                                     {{ $product->name }}
                                             </a>
-                                                @endif
+                        @endif
                         <div class="d-flex my-3">
                             <i class="fas fa-star text-primary"></i>
                             <i class="fas fa-star text-primary"></i>
@@ -210,7 +212,28 @@
     </div>
     </div>
     <!-- Bestsaler Product End -->
-    {{ $latestProduct->links() }}
+
+    <div class="col-12">
+
+        <div class="pagination d-flex justify-content-center mt-5">
+            @if ($products->lastPage() > 1)
+                {{-- Previous Page Link --}}
+                <a href="{{ $products->previousPageUrl() }}"
+                    class="rounded {{ $products->onFirstPage() ? 'disabled' : '' }}">&laquo;</a>
+
+                {{-- Pagination Numbers --}}
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <a href="{{ $products->url($i) }}"
+                        class="rounded {{ $products->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+                @endfor
+
+                {{-- Next Page Link --}}
+                <a href="{{ $products->nextPageUrl() }}"
+                    class="rounded {{ $products->hasMorePages() ? '' : 'disabled' }}">&raquo;</a>
+            @endif
+        </div>
+
+    </div>
     </div>
 
     </div>

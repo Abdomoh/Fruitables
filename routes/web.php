@@ -51,6 +51,7 @@ Route::prefix('')->group(function () {
     });
     Route::controller(ProductsController::class)->group(function () {
         Route::get('product-detels/{id}', 'productDetels')->name('product-detels');
+        Route::get('shope', 'productShope')->name('shope');
     });
     Route::controller(CartController::class)->middleware('auth')->group(function () {
         Route::post('add-to-cart', 'addProductToCart')->name('cart.store');

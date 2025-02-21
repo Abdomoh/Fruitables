@@ -45,7 +45,7 @@
                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                    <div class="navbar-nav mx-auto">
                        <a href="{{ url('/') }}" class="nav-item nav-link active">{{ __('main.Home') }}</a>
-                       <a href="shop.html" class="nav-item nav-link">{{ __('main.Shope') }}</a>
+                       <a href="{{ url('shope') }}" class="nav-item nav-link">{{ __('main.Shope') }}</a>
                        <a href="#category" class="nav-item nav-link">{{ __('main.Categories') }}</a>
                        <div class="nav-item dropdown">
                            <a href="#products" class="nav-item nav-link">{{ __('main.Products') }}</a>
@@ -92,7 +92,7 @@
                                        {{ __('main.profile') }}</a>
                                    <form method="POST" action="{{ route('logout') }}">
                                        @csrf
-                                       <a class="dropdown-item" href="route('logout')"
+                                       <a class="dropdown-item" href="route('logout')
                                            onclick="event.preventDefault();
                                      this.closest('form').submit();">
                                            <i class="fas fa-sign-out-alt"></i> {{ __('main.logout') }}</a>

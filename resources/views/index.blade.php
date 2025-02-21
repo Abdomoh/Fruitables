@@ -1,7 +1,17 @@
 @extends('layouts.website.nav')
-
 @section('content')
     <!-- Hero Start -->
+    <style>
+        b,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Cairo", sans-serif;
+        }
+    </style>
     <div class="container-fluid py-5 mb-5 hero-header">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
@@ -10,18 +20,18 @@
                     <h1 class="mb-5 display-3 text-primary" style="font-family: cairo;">
                         {{ __('main.Organic_Veggies_Fruits_Foods') }}</h1>
                     <div class="position-relative mx-auto">
-                        <input class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" type="number"
-                            placeholder="Search">
-                        <button type="submit"
-                            class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                            style="top: 0; right: 25%;left: 25%;" id="btn-search">Submit Now</button>
+                        <form action="{{ url('/') }}" method="GET">
+                            <input type="text" name="search"
+                                class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+                                placeholder="Search">
+                            <button type="submit"
+                                class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+                                style="top: 0; right: 25%;left: 25%;" id="btn-search">Submit Now</button>
+                        </form>
                     </div>
                 </div>
-
                 <div class="col-md-12 col-lg-5">
-
                     <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-
                         <div class="carousel-inner" role="listbox">
                             @foreach ($categories as $category)
                                 <div class="carousel-item active rounded">
@@ -36,10 +46,7 @@
                                     </a>
                                 </div>
                             @endforeach
-
-
                         </div>
-
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -50,16 +57,12 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
     <!-- Hero End -->
-
     <body>
         <!-- Featurs Section Start -->
         <div class="container-fluid featurs py-5">
@@ -125,64 +128,70 @@
                             <div class="row g-4">
                                 <div class="col-lg-12">
                                     <div class="row g-4">
-                                        @foreach ($products as $product)
-                                            <div class="col-md-6 col-lg-4 col-xl-3">
-                                                <div class="rounded position-relative fruite-item">
-                                                    <div class="fruite-img">
-                                                        <img src="../uploads/products/{{ $product->image }}" loading="lazy"
-                                                            class="img-fluid w-100 rounded-top" alt="">
-                                                    </div>
-                                                    <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                        style="top: 10px; left: 10px;">
-
-
-                                                        @if (App::getLocale() == 'ar')
-                                                            {{ $product->category->name_ar }}
-                                                        @else
-                                                            {{ $product->category->name }}
-                                                        @endif
-                                                    </div>
-                                                    <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <a href="{{ url('product-detels',$product->id) }}" class="h5">
-                                                        @if (App::getLocale() == 'ar')
-                                                            <h4>{{ $product->name_ar }}</h4>
-                                                        @else
-                                                            <h4>{{ $product->name }}</h4>
-                                                        @endif
-                                                        </a>
-                                                        @if (App::getLocale() == 'ar')
-                                                            <p>{{ Str::of($product->description_ar)->limit(40) }}</p>
-                                                        @else
-                                                            <p>{{ Str::of($product->description)->limit(40) }}</p>
-                                                        @endif
-                                                        <div class="d-flex justify-content-between flex-lg-wrap">
-                                                            <p class="text-dark fs-5 fw-bold mb-0">${{ $product->price }} /
-                                                                kg</p>
-                                                            {{-- <a href="{{ route('cart.store') }}"
+                                        @if ($products->count() > 0)
+                                            @foreach ($products as $product)
+                                                <div class="col-md-6 col-lg-4 col-xl-3">
+                                                    <div class="rounded position-relative fruite-item">
+                                                        <div class="fruite-img">
+                                                            <img src="../uploads/products/{{ $product->image }}"
+                                                                loading="lazy" class="img-fluid w-100 rounded-top"
+                                                                alt="">
+                                                        </div>
+                                                        <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                                            style="top: 10px; left: 10px;">
+                                                            @if (App::getLocale() == 'ar')
+                                                                {{ $product->category->name_ar }}
+                                                            @else
+                                                                {{ $product->category->name }}
+                                                            @endif
+                                                        </div>
+                                                        <div
+                                                            class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                            <a href="{{ url('product-detels', $product->id) }}"
+                                                                class="h5">
+                                                                @if (App::getLocale() == 'ar')
+                                                                    <h4>{{ $product->name_ar }}</h4>
+                                                                @else
+                                                                    <h4>{{ $product->name }}</h4>
+                                                                @endif
+                                                            </a>
+                                                            @if (App::getLocale() == 'ar')
+                                                                <p>{{ Str::of($product->description_ar)->limit(40) }}</p>
+                                                            @else
+                                                                <p>{{ Str::of($product->description)->limit(40) }}</p>
+                                                            @endif
+                                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                                <p class="text-dark fs-5 fw-bold mb-0">
+                                                                    ${{ $product->price }} /
+                                                                    kg</p>
+                                                                {{-- <a href="{{ route('cart.store') }}"
                                                                 class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                                                     class="fa fa-shopping-bag me-2 text-primary"></i> Add to
                                                                 cart</a> --}}
-
-                                                            <form action="{{ route('cart.store') }}" method="POST"
-                                                                enctype="multipart/form-data">
-                                                                @csrf
-                                                                <input type="hidden" value="{{ $product->id }}"
-                                                                    name="product_id">
-                                                                <input type="hidden" value="{{ $product->price }}"
-                                                                    name="price">
-                                                                <input type="hidden" value="1" name="quantity">
-                                                                <a href=""
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                        class="fa fa-shopping-bag me-2 text-primary"></i><button
-                                                                        class="btn btn-sm text-primary">
-                                                                        {{ __('main.add_to_cart') }}</button> </a>
-
-                                                            </form>
+                                                                <form action="{{ route('cart.store') }}" method="POST"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <input type="hidden" value="{{ $product->id }}"
+                                                                        name="product_id">
+                                                                    <input type="hidden" value="{{ $product->price }}"
+                                                                        name="price">
+                                                                    <input type="hidden" value="1" name="quantity">
+                                                                    <a href=""
+                                                                        class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                                            class="fa fa-shopping-bag me-2 text-primary"></i><button
+                                                                            class="btn btn-sm text-primary">
+                                                                            {{ __('main.add_to_cart') }}</button> </a>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            @endforeach
+                                        @else
+                                            <div class="text-center">
+                                                <h3 style="font-family: Cairo;">{{ __('main.not_found_match') }}</h3>
                                             </div>
-                                        @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +205,6 @@
         <div class="container-fluid service py-1" id="category">
             <div class="container py-1">
                 <div class="row g-4 justify-content-center">
-
                     @foreach ($categories as $category)
                         <div class="col-md-6 col-lg-4">
                             <a href="#">
@@ -243,7 +251,7 @@
                             </div>
                             <div class="p-4 rounded-bottom">
                                 @if (App::getLocale() == 'ar')
-                                    <h4>{{ $product->name_ar }}</h4>
+                                    <h4 style="font-family: cairo;">{{ $product->name_ar }}</h4>
                                 @else
                                     <h4>{{ $product->name }}</h4>
                                 @endif
@@ -253,10 +261,24 @@
                                     <p>{{ Str::of($product->description, 50)->limit(50) }}</p>
                                 @endif
                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold mb-0">$7.99 / kg</p>
-                                    <a href="#"
-                                        class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                            class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                    <p class="text-dark fs-5 fw-bold mb-0">{{ $product->price }} @if (App::getlocale() == 'ar')
+                                            ج.س
+                                        @else
+                                            SDG
+                                        @endif
+                                    </p>
+                                    <form action="{{ route('cart.store') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                        <input type="hidden" value="{{ $product->price }}" name="price">
+                                        <input type="hidden" value="1" name="quantity">
+                                        <a href=""
+                                            class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                class="fa fa-shopping-bag me-2 text-primary"></i><button
+                                                class="btn btn-sm text-primary">
+                                                {{ __('main.add_to_cart') }}</button> </a>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -265,7 +287,6 @@
             </div>
         </div>
         <!-- Vesitable Shop End -->
-
         <!-- Bestsaler Product Start -->
         <div class="container-fluid ">
             <div class="container ">
@@ -283,7 +304,7 @@
                                             class="img-fluid rounded-circle w-100" alt="">
                                     </div>
                                     <div class="col-6">
-                                        <a href="#" class="h5">
+                                        <a href="#" class="h5" style="font-family: cairo;">
                                             @if (App::getLocale() == 'ar')
                                                 {{ $product->name_ar }}
                                             @else
@@ -311,14 +332,12 @@
                         <a href="" class="btn border border-secondary rounded-pill px-3 text-primary"><i
                                 class="fa fa-shopping-bag  text-primary"></i><button class="btn btn-sm text-primary">
                                 {{ __('main.add_to_cart') }}</button> </a>
-
                     </form>
                 </div>
             </div>
         </div>
         </div>
         @endforeach
-
         </div>
         </div>
         </div>

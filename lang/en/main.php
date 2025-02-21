@@ -1,6 +1,4 @@
 <?php
-
-
 return [
     'Fruitables' => 'Fruitables',
     'Location' => 'Port-sudan,Airport District',
@@ -23,7 +21,6 @@ return [
     'Enter_Your_password_Confirmation' => 'Enter Your Password Confirmation',
     'Organic_Foods' => '100% Organic Foods',
     'Organic_Veggies_Fruits_Foods' => 'Organic Veggies & Fruits Foods',
-
     'Free_Shipping' => ' Free Shipping',
     'Free_on_order_over' => ' Free on order over 200 SD',
     'Security_Payment' => 'Security Payment',
@@ -33,13 +30,12 @@ return [
     'Support' => 'Support 24/7',
     'Support_every_time_fas' => ' Support every time fast ',
     'latest_products' => ' Latest Products ',
-    'Our_best_selling_products'=>'Our best selling products',
-    'Bestseller_Products' =>'Bestseller Products',
-    'Available_Products' =>'Available Products',
-    'quality_certificates'=>'quality certificates',
-    'quality_of_service' =>'quality of service',
-    'satisfied_customers' =>'satisfied customers',
-
+    'Our_best_selling_products' => 'Our best selling products',
+    'Bestseller_Products' => 'Bestseller Products',
+    'Available_Products' => 'Available Products',
+    'quality_certificates' => 'quality certificates',
+    'quality_of_service' => 'quality of service',
+    'satisfied_customers' => 'satisfied customers',
     'add_to_cart_success' => ' Add Product To Cart',
     'already_to_cart_success' => 'alredy product in cart',
     'add_to_cart' => 'add to cart',
@@ -83,35 +79,32 @@ return [
     'product_detels' => 'Product Detels',
     'status' => 'Status order',
     'order_no' => 'Order No',
-    'coustmer'=>'Coustmer Name',
+    'coustmer' => 'Coustmer Name',
     'created_at' => 'Created at order',
     'shoping' => 'Shoping',
     'go_to' => 'Go To',
-
-    'Shop_Info'=>'Shop Info',
-    'About_Us' =>'About Us',
-    'Contact_Us'=>'Contact Us',
-    'account'=>' Account',
-    'My_Account'=>'My Account',
-    'Shopping_Cart'=>'Shopping Cart',
-    'Order_History' =>'Order History',
-    'Contact' =>'Contact',
-    'Subscribe_Now'=>'Subscribe Now',
-
-    'Email'=>'Email',
-    'Subscribe_Now'=>'Subscribe Now',
-    'Submit' =>'Submit',
-    'print'=>'Print',
-    'Categories'=>'Categories',
-    'Featured_products'=>'Featured products',
-
-
-    'Confirm_Password'=>'Confirm Password',
-    'password'=>'Password',
-    'optional'=>'optional',
-    'Update_Profile'=>'Update Profile',
-    'profile_information'=>'Profile Information',
-    'profile'=>'Profile'
-
-
+    'Shop_Info' => 'Shop Info',
+    'About_Us' => 'About Us',
+    'Contact_Us' => 'Contact Us',
+    'account' => ' Account',
+    'My_Account' => 'My Account',
+    'Shopping_Cart' => 'Shopping Cart',
+    'Order_History' => 'Order History',
+    'Contact' => 'Contact',
+    'Subscribe_Now' => 'Subscribe Now',
+    'Email' => 'Email',
+    'Subscribe_Now' => 'Subscribe Now',
+    'Submit' => 'Submit',
+    'print' => 'Print',
+    'Categories' => 'Categories',
+    'Featured_products' => 'Featured products',
+    'Confirm_Password' => 'Confirm Password',
+    'password' => 'Password',
+    'optional' => 'optional',
+    'Update_Profile' => 'Update Profile',
+    'profile_information' => 'Profile Information',
+    'profile' => 'Profile',
+    'All' => 'All',
+    'filter' => 'Filter',
+    'not_found_match' => ' Not found match data'
 ];

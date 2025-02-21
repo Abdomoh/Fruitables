@@ -1,6 +1,4 @@
 <?php
-
-
 return [
   'Fruitables' => 'فاكهتي',
   'Location' => 'بورتسودان-حي المطار',
@@ -38,7 +36,6 @@ return [
   'quality_certificates' => 'شهادات الجودة',
   'quality_of_service' => 'جودة الخدمة',
   'satisfied_customers' => ' العملاء الراضون',
-
   'add_to_cart_success' => 'تم اضافة المنتج الي عربة التسوق',
   'already_to_cart_success' => 'موجود مسبقا بالعربه',
   'add_to_cart' => 'اضف المنتج',
@@ -83,11 +80,9 @@ return [
   'status' => 'حالة الطلب',
   'order_no' => ' رقم الطلب',
   'coustmer' => 'اسم العميل',
-
   'created_at' => ' تاريخ انشاء الطلب',
   'shoping' => 'التسوق',
   'go_to' => 'اذهب الي ',
-
   'Shop_Info' => 'معلومات المتجر',
   'About_Us' => 'حولنا',
   'Contact_Us' => ' اتصل بنا',
@@ -98,19 +93,17 @@ return [
   'account' => 'معلومات الحساب',
   'Subscribe_Now' => 'اشترك الان ',
   'Submit' => 'ارسال',
-
   'Email' => 'الايميل',
   'print' => 'طباعة',
   'Categories' => 'الاصناف',
   'Featured_products' => 'المنتجات المميزة',
-
   'Confirm_Password' => 'تأكيد كلمة المرور',
   'password' => 'كلمة المرور',
   'optional' => 'اختياري',
   'Update_Profile' => 'تحديث البروفايل',
   'profile_information' => 'معلومات البروفايل',
-  'profile' => 'البروفايل'
-
-
-
+  'profile' => 'البروفايل',
+  'All'=> 'كل',
+  'filter'=>'فلتر',
+  'not_found_match' =>'لاتوجد بيانات مطابقة'
 ];
