@@ -56,7 +56,7 @@
 
                                     @if ($orders->count() == 0)
                                         <p> {{ __('main.order_not_found') }}.
-                                            <a href="{{ url('shoping') }}"
+                                            <a href="{{ url('shope') }}"
                                                 class="btn btn-outline-primary-2"><span>{{ __('main.go_to') }}
                                                     {{ __('main.shoping') }}</span><i
                                                     class="icon-long-arrow-right"></i></a>

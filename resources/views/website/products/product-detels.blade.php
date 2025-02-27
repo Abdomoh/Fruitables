@@ -109,7 +109,7 @@
                                         <li>
                                             <div class="d-flex justify-content-between fruite-name">
                                                 <a href="#"><i class="fas fa-apple-alt me-2"></i>
-                                                    @if (App::getlocale() == 'ar')
+
                                                 </a>
                                                 <span> ({{ $category->products->count() }})</span>
                                             </div>
@@ -215,23 +215,7 @@
 
     <div class="col-12">
 
-        <div class="pagination d-flex justify-content-center mt-5">
-            @if ($products->lastPage() > 1)
-                {{-- Previous Page Link --}}
-                <a href="{{ $products->previousPageUrl() }}"
-                    class="rounded {{ $products->onFirstPage() ? 'disabled' : '' }}">&laquo;</a>
-
-                {{-- Pagination Numbers --}}
-                @for ($i = 1; $i <= $products->lastPage(); $i++)
-                    <a href="{{ $products->url($i) }}"
-                        class="rounded {{ $products->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
-                @endfor
-
-                {{-- Next Page Link --}}
-                <a href="{{ $products->nextPageUrl() }}"
-                    class="rounded {{ $products->hasMorePages() ? '' : 'disabled' }}">&raquo;</a>
-            @endif
-        </div>
+  
 
     </div>
     </div>

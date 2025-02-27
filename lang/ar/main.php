@@ -52,9 +52,13 @@ return [
   'handel' => 'التحكم',
   'image' => 'الصورة',
   'price' => 'السعر',
-  'quantity' => 'الكمية',
+  'quantity'               => 'الكمية',
   'product' => 'المنتج',
   'checkout' => 'الدفع',
+  'Payment_Details' => 'تفاصيل الدفع',
+  'amount' => 'المبلغ',
+  'pay_now' => '
+ادفع الان',
   'Billing_details' => ' تفاصيل الفاتورة',
   'notes_order' => '(اضافة ملاحظة (اختياري',
   'Last_Name' => 'الاسم الثاني',
@@ -70,6 +74,12 @@ return [
   'emtpy_cart' => 'العربة فارغة لايمكن اكمال الطلب',
   'add_to_order_success' => 'تم اضافة الطلب بنجاح',
   'orders' => 'الطلبات',
+  'Please_correct' => 'يرجى تصحيح الأخطاء والمحاولة مرة أخرى',
+  'payment_success'=>'تم الدفع بنجاح!',
+  'Expiration_Year' => 'سنة الانتهاء',
+  'Card_Number' => 'رقم البطاقة',
+  'Expiration_Month' => 'شهر الانتهاء',
+  'Name_on_Card' => 'الاسم الموجود علي البطاقة',
   'dashboard' => 'لوحة تجكم الطلبات',
   'client' => 'العميل',
   'order_not_found' => ' لاتوجد طلبات ',
@@ -103,7 +113,19 @@ return [
   'Update_Profile' => 'تحديث البروفايل',
   'profile_information' => 'معلومات البروفايل',
   'profile' => 'البروفايل',
-  'All'=> 'كل',
-  'filter'=>'فلتر',
-  'not_found_match' =>'لاتوجد بيانات مطابقة'
+  'All' => 'كل',
+  'filter' => 'فلتر',
+  'not_found_match' => 'لاتوجد بيانات مطابقة',
+  'Email_Password_Reset_Link' => 'رابط تعيين كلمة المرور',
+  'Forgot your password?' =>
+  'هل نسيت كلمة المرور؟ لا مشكلة. فقط أخبرنا بعنوان بريدك
+   الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور عبر
+   البريد الإلكتروني الذي سيسمح لك باختيار كلمة مرور جديدة.',
+  'forgot-password ?' => ' هل نسيت كلمة المرور',
+  'Reset Password' => 'اعادة تعيين كلمة المرور ',
+  'password_Confirmation' => 'تاكيد كلمة المرور',
+  'Password' => 'كلمة المرور',
+  'payment_pay' => 'ادفع عن طريق البطاقة',
+   'search'=>'بحث'
+
 ];

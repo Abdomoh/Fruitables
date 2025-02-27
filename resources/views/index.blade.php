@@ -26,7 +26,7 @@
                                 placeholder="Search">
                             <button type="submit"
                                 class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                                style="top: 0; right: 25%;left: 25%;" id="btn-search">Submit Now</button>
+                                style="top: 0; right: 25%;left: 25%;" id="btn-search">{{ __('main.search') }}</button>
                         </form>
                     </div>
                 </div>

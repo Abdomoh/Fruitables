@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Http\Controllers\Web;
+
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+
 class ProductsController extends Controller
 {
     public function productDetels($id)
@@ -29,6 +32,7 @@ class ProductsController extends Controller
         /// search by products
         if ($request->has('search') && $request->search != '') {
             $query->where('name', 'LIKE', '%' . $request->search . '%');
+
         }
         $products = $query->latest()->paginate(6);
         $categories = Category::withCount('products')->paginate(6);

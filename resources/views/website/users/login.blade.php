@@ -11,20 +11,21 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
+                        <x-auth-session-status class="mb-4" :status="session('status')" />
                         <form action="{{ route('login') }}" class="" method="POST" class="" dir="">
                             @csrf
                             <input type="email" name="email" class="w-100 form-control border-0 py-3 mb-4"
                                 placeholder=" {{ __('main.Enter_Your_Email') }}" value="{{ old('email') }}">
+                                <x-input-error :messages="$errors->get('email')" class="mt-2  text-danger" />
 
                             <input type="password" name="password" class="w-100 form-control border-0 py-3 mb-4"
                                 placeholder=" {{ __('main.Enter_Your_Password') }}">
-                            <x-input-error :messages="$errors->get('password')" class="mt-2  text-danger" />
+                                <x-input-error :messages="$errors->get('password')" class="mt-2  text-danger" />
                             <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary "
                                 type="submit" name="submit">{{ __('main.login') }} </button>
                             <br>
-                            <div class="text-center">
-                                <p class="text-blue">  {{ __('main.Or') }}  {{ __('main.login') }} :</p>
-                            </div>
+                            <p ><a href="{{ url('forgot-password') }}">{{ __('main.forgot-password ?') }} </a></p>
+
                         </form>
                         <a href="{{ route('redirect.google') }}">  <button class="w-100 btn form-control border-secondary "data-mdb-button-init
                             data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style=""

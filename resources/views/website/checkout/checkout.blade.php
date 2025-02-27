@@ -14,11 +14,8 @@
         </ol>
     </div>
     <!-- Single Page Header End -->
-
-
     <!-- Checkout Page Start -->
     <div class="container-fluid py-5">
-
         <div class="container py-5">
             <div class="row">
                 <div class="col-sm-12">
@@ -46,11 +43,9 @@
                                     @error('last_name')
                                         <span class="form-text text-danger">{{ $message }}</s>
                                         @enderror
-
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-item">
                             <label class="form-label my-3">{{ __('main.address') }} <sup>*</sup></label>
                             <input type="text" name="address"
@@ -60,26 +55,22 @@
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-item">
                             <label class="form-label my-3">{{ __('main.phone') }}<sup>*</sup></label>
                             <input type="tel" name="phone" class="form-control" value="{{ old('phone') }}">
                             @error('payment_method')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-item">
                             <label class="form-label my-3">{{ __('email') }}<sup>*</sup></label>
                             <input type="email" name="email" class="form-control"
                                 value="{{ Auth::user()->email ?? '' }}">
                         </div>
-
                         <hr>
-
                         <div class="form-item">
                             <textarea name="text" name="order_notes" class="form-control" spellcheck="false" cols="30" rows="11"
                                 placeholder="{{ __('main.order_notes') }}">{{ old('order_notes') }}</textarea>
-
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 col-xl-5">
@@ -96,8 +87,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($cartproducts as $item)
-                                    <tr>
-
+                                        <tr>
                                             <th scope="row">
                                                 <div class="d-flex align-items-center mt-2">
                                                     <img src="../uploads/products/{{ $item->product->image }} "
@@ -109,9 +99,7 @@
                                             <td class="py-5">${{ $item->price }}</td>
                                             <td class="py-5">{{ $item->quantity }}</td>
                                             <td class="py-5">${{ number_format($item->total, 2) }}</td>
-
-
-                                    </tr>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -119,23 +107,34 @@
                         <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="checkbox" name="payment_method"
-                                        class="form-check-input bg-primary border-0" id="Transfer-1" value="0">
+                                    <input type="radio" name="payment_method" class="form-check-input bg-primary border-0"
+                                        id="Transfer-1" value="0" id="payment" class="btn btn-primary"
+                                        data-bs-toggle="collapse" href="#collapseExample-1" role="button"
+                                        aria-expanded="false" aria-controls="collapseExample-1">
                                     <label class="form-check-label" for="Transfer-1">
                                         {{ __('main.Direct_Bank_Transfer') }}</label>
                                     @error('payment_method')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <!-- Collapsible Content -->
+                                <div class="collapse mt-3" id="collapseExample-1">
+                                    <div class="card card-body">
+                                  <a href="{{url('stripe',$total)}}"
+                                class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">
+                                {{ __('main.payment_pay') }} </a>
+                                    </div>
+                                </div>
                                 <p class="text-start text-dark">{{ __('main.detels_bank') }}.</p>
                             </div>
                         </div>
-
                         <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                             <div class="col-12">
                                 <div class="form-check text-start my-3">
-                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Delivery-1"
-                                        name="payment_method" value="1">
+                                    <input type="radio" class="form-check-input bg-primary border-0" id="Delivery-1"
+                                        name="payment_method" value="1" id="payment" data-toggle="collapse"
+                                        href="#collapseExample-1" role="button" aria-expanded="false"
+                                        aria-controls="collapseExample">
                                     <label class="form-check-label"
                                         for="Delivery-1">{{ __('main.Cash_On_Delivery') }}</label>
                                     @error('payment_method')
@@ -144,7 +143,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row g-4 text-center align-items-center justify-content-center pt-4">
                             <button type="submit"
                                 class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">

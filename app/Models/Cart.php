@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class Cart extends Model
 {
     use HasFactory;
-    protected $table = 'carts';
+    
 
 
     protected $fillable = ['id',  'user_id', 'price', 'quantity', 'total', 'product_id'];
