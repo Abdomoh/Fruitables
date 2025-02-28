@@ -28,11 +28,7 @@ class CheckoutController extends Controller
     public function placeOrder(Request $request)
     {
 
-        $validator = Validator::make($request->all(), [
-            'payment_method' => 'required',
-            'address' => 'required',
-            'phone' => 'required|starts_with:0|digits:10'
-        ]);
+        $validator = $this->validateOrder($request);
 
         if ($validator->fails()) {
             return redirect()->back()
@@ -45,7 +41,7 @@ class CheckoutController extends Controller
             $order = new Order();
             $order->payment_method = $request->payment_method;
             $order->order_notes = $request->order_notes;
-            $order->order_no= 'ORD-'. Str::random(8);
+            $order->order_no = 'ORD-' . Str::random(8);
             $order->user_id = Auth::user()->id;
 
             $order->save();
@@ -66,29 +62,51 @@ class CheckoutController extends Controller
             $order->save();
 
             // Clear the cart after successful order
-            $removeCart = Cart::AuthUser()->get();
-            foreach ($removeCart as $key => $remove) {
-                $data = Cart::find($remove->id);
-                $data->delete();
-            }
+            $this->clearUserCart();
+
             DB::commit();
 
+            // Update user address if empty
+            $this->updateUserAddress($request);
 
-            if (empty(Auth::user()->adress)) {
-                $user = User::where('id', Auth::user()->id ?? '')->first();
-                $user->name = $request->name;
-                $user->last_name = $request->last_name;
-                $user->phone = $request->phone;
-                $user->address = $request->address;
-                $user->email = $request->email;
-                $user->update();
-            }
             session::flash('success', __('main.add_to_order_success'));
             return to_route('cart-product');
         } catch (\Exception $e) {
             DB::rollBack();
-            session::flash(' warning',__('main.emtpy_cart'));
+            session::flash(' warning', __('main.emtpy_cart'));
             return back();
+        }
+    }
+
+    private function validateOrder($request)
+    {
+        return Validator::make($request->all(), [
+            'payment_method' => 'required',
+            'address' => 'required',
+            'phone' => 'required|starts_with:0|digits:10'
+        ]);
+    }
+
+    private function clearUserCart()
+    {
+        $removeCart = Cart::AuthUser()->get();
+        foreach ($removeCart as $key => $remove) {
+            $data = Cart::find($remove->id);
+            $data->delete();
+        }
+    }
+
+    private function updateUserAddress($request)
+    {
+        $user = Auth::user();
+        if (empty($user->address)) {
+            $user->update([
+                'name' => $request->name,
+                'last_name' => $request->last_name,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'email' => $request->email,
+            ]);
         }
     }
 }
