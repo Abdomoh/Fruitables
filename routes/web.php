@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Web\SocialiteController;
 use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Web\LandingPageController;
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('products', ProductController::class);
         Route::resource('orders', OrdersController::class);
         Route::get('update-order/{id}', [OrdersController::class,'updateStatusOrder']);
+        Route::resource('clients', ClientController::class);
 
     });
     require __DIR__ . '/adminAuth.php';
