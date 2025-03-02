@@ -69,7 +69,7 @@
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">21</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $categoryies_count }}</h4>
 
                         </div>
 
@@ -88,7 +88,7 @@
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">522</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $orders_count }}</h4>
 
                         </div>
 
@@ -107,7 +107,7 @@
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">44</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $approved_order }}</h4>
 
                         </div>
 
@@ -128,14 +128,14 @@
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">55</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $wetting_order }}</h4>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 
@@ -149,35 +149,35 @@
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">52</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $cash_order }}</h4>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 
-    
+
     <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
         <div class="card overflow-hidden sales-card bg-primary-gradient">
             <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                 <div class="">
-                    <h6 class="mb-3 tx-12 text-white">اجمالي اليوم   </h6>
+                    <h6 class="mb-3 tx-12 text-white">اجمالي  طلبات اليوم   </h6>
                 </div>
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">55ج</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $total_order_daily }}</h4>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 
@@ -185,19 +185,19 @@
         <div class="card overflow-hidden sales-card bg-danger-gradient">
             <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                 <div class="">
-                    <h6 class="mb-3 tx-12 text-white">اجمالي الشهر   </h6>
+                    <h6 class="mb-3 tx-12 text-white">اجمالي طلبات الشهر   </h6>
                 </div>
                 <div class="pb-0 mt-0">
                     <div class="d-flex">
                         <div class="">
-                            <h4 class="tx-20 font-weight-bold mb-1 text-white">55ج</h4>
+                            <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $total_order_monthly }}</h4>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
 

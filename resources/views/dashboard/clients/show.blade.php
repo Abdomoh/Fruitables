@@ -25,10 +25,10 @@
                             <div class="col-md">
                                 <label class="tx-gray-600">الفاتورة</label>
                                 <div class="billed-to">
-                                    @foreach ($orders as $order)
-                                        <h6>رقم الفاتورة: {{ $order->order_no ?? '' }}</h6>
-                                        <p>التاريخ: {{ date('Y/m/d', strtotime($order->created_at ?? now())) }}</p>
-                                    @endforeach
+
+                                        <h6>رقم الفاتورة: {{ $orders->first()->order_no ?? '' }}</h6>
+                                        <p>التاريخ: {{ date('Y/m/d', strtotime($orders->first()->created_at ?? now())) }}</p>
+
                                 </div>
                             </div>
                             <div class="col-md">
