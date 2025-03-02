@@ -3,13 +3,13 @@
     <div class="container-fluid">
         <div class="main-header-left ">
             <div class="responsive-logo">
-                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/1630276374.PNG') }}" class="logo-1"
+                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/hero-img-1.PNG') }}" class="logo-1"
                         alt="logo"></a>
-                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/1630276374.PNG') }}"
+                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/hero-img-1.PNG') }}"
                         class="dark-logo-1" alt="logo"></a>
-                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/1630276374.PNG') }}" class="logo-2"
+                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/hero-img-1.PNG') }}" class="logo-2"
                         alt="logo"></a>//
-                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/1630276374.PNG') }}"
+                <a href="{{ url('dashboard') }}"><img src="{{ URL::asset('admin/img/hero-img-1.PNG') }}"
                         class="dark-logo-2" alt="logo"></a>
             </div>
             <div class="app-sidebar__toggle" data-toggle="sidebar">

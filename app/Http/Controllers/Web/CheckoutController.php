@@ -1,9 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Web;
-
-
-
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
@@ -15,21 +11,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
 class CheckoutController extends Controller
 {
     public function checkout()
     {
         $cartproducts = Cart::with(['product'])->AuthUser()->orderBy('created_at', 'desc')->get();
-
         return view('website.checkout.checkout', compact('cartproducts'));
     }
-
     public function placeOrder(Request $request)
     {
-
         $validator = $this->validateOrder($request);
-
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
@@ -37,15 +28,12 @@ class CheckoutController extends Controller
         }
         try {
             DB::beginTransaction();
-
             $order = new Order();
             $order->payment_method = $request->payment_method;
             $order->order_notes = $request->order_notes;
             $order->order_no = 'ORD-' . Str::random(8);
             $order->user_id = Auth::user()->id;
-
             $order->save();
-
             $items = Cart::with('product')->AuthUser()->get();
             foreach ($items as $key => $item) {
                 OrderProduct::create([
@@ -60,15 +48,11 @@ class CheckoutController extends Controller
                 ->select(OrderProduct::raw('sum(quantity * price) as total'))->first();
             $order->total = $orderProduct->total;
             $order->save();
-
             // Clear the cart after successful order
             $this->clearUserCart();
-
             DB::commit();
-
             // Update user address if empty
             $this->updateUserAddress($request);
-
             session::flash('success', __('main.add_to_order_success'));
             return to_route('cart-product');
         } catch (\Exception $e) {
@@ -77,7 +61,6 @@ class CheckoutController extends Controller
             return back();
         }
     }
-
     private function validateOrder($request)
     {
         return Validator::make($request->all(), [
@@ -86,7 +69,6 @@ class CheckoutController extends Controller
             'phone' => 'required|starts_with:0|digits:10'
         ]);
     }
-
     private function clearUserCart()
     {
         $removeCart = Cart::AuthUser()->get();
@@ -95,7 +77,6 @@ class CheckoutController extends Controller
             $data->delete();
         }
     }
-
     private function updateUserAddress($request)
     {
         $user = Auth::user();
